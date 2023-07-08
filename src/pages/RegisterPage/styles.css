@@ -1,0 +1,34 @@
+#register__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 1rem;
+    background-color: #000000;
+}
+
+#register__form .field label {
+    display: block;
+}
+
+#register__form .form {
+    background-color: #f1f1f1;
+    padding: 4rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 480px;
+}
+
+#register__form .form a {
+    text-decoration: none;
+}
+
+#register__form .field input {
+    width: 100%;
+}
+
+#register__form .actions {
+    text-align: center;
+    margin-top: 1rem;
+}
