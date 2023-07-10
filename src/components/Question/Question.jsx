@@ -4,7 +4,7 @@ import Option from "../Option/Option";
 
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
-  const currentQuestion = quizState.questions[quizState.currentQuestion];
+  const currentQuestion = quizState.questions?.[quizState.currentQuestion];
   const [answer, setAnswer] = useState("");
 
   const handleOpenAnswerSubmit = () => {
