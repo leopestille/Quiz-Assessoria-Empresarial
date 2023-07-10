@@ -36,17 +36,26 @@ const quizReducer = (state, action) => {
       };
     }
 
-    case "SELECT_OPTION":
+    case "SELECT_OPTION": {
+      const selectedOption = action.payload.option;
+
       return {
         ...state,
         answerSelected: true,
-        selectedOption: action.payload.option,
-        score: state.score + action.payload.option.value,
+        selectedOption,
       };
+    }
 
     case "CHANGE_QUESTION": {
       const nextQuestion = state.currentQuestion + 1;
       let endGame = false;
+      let newScore = state.score;
+
+      // Add logic to update score if an answer has been selected
+      if (state.answerSelected) {
+        const optionValue = state.selectedOption.value;
+        newScore += optionValue;
+      }
 
       if (!state.questions[nextQuestion]) {
         endGame = true;
@@ -57,6 +66,7 @@ const quizReducer = (state, action) => {
         currentQuestion: nextQuestion,
         gameStage: endGame ? STAGES[2] : state.gameStage,
         answerSelected: false,
+        score: newScore,
       };
     }
 
