@@ -37,7 +37,7 @@ const Question = () => {
           </>
         ) : (
           currentQuestion.options.map((option) => (
-            <Option option={option} key={option} />
+            <Option option={option} key={option.label} />
           ))
         )}
       </div>

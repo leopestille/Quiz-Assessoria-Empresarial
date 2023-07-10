@@ -1,97 +1,147 @@
 const data = [
   {
     question: "Sua empresa possui missão, visão e valores? ",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {
     question:
       "Você possui objetivos e metas de curto prazo (até 2 anos) para sua empresa? ",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {
     question:
       "Você possui objetivos e metas de médio prazo (de 2 a 4 anos) para sua empresa? ",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {
     question:
       "Você possui objetivos e metas de longo prazo (mais de 5 anos) para sua empresa? ",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {
     question:
       "Qual é o tamanho da empresa em termos de número de funcionários?",
     options: [
-      "Até 5 funcionários",
-      "de 6 a 10",
-      "de 11 a 20",
-      "de 21 a 50",
-      "+50",
+      { label: "Até 5 funcionários", value: 1 },
+      { label: "de 6 a 10", value: 2 },
+      { label: "de 11 a 20", value: 3 },
+      { label: "de 21 a 50", value: 4 },
+      { label: "+50", value: 5 },
     ],
     type: "choice",
   },
   {
     question: "Qual o faturamento da sua empresa por mês?",
     options: [
-      "Até R$ 10 mil",
-      "de R$ 11 a 50 mil",
-      "de R$ 51 mil a 100 mil",
-      "de R$ 101 mil a 500 mil",
-      "R$ 500 mil+",
+      { label: "Até R$ 10 mil", value: 1 },
+      { label: "de R$ 11 a 50 mil", value: 2 },
+      { label: "de R$ 51 mil a 100 mil", value: 3 },
+      { label: "de R$ 101 mil a 500 mil", value: 4 },
+      { label: "R$ 500 mil+", value: 5 },
     ],
     type: "choice",
   },
   {
     question: "Sua empresa sofre sazonalidade?",
-    options: ["Sim", "Não", "Não sei o que significa"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+      { label: "Não sei o que significa", value: 2 },
+    ],
     type: "choice",
   },
   {
     question: "Quantos concorrentes diretos seu negócio possui?",
-    options: ["Até 5", "de 6 a 10", "de 11 a 20", "de 21 a 50", "+50"],
+    options: [
+      { label: "Até 5", value: 1 },
+      { label: "de 6 a 10", value: 2 },
+      { label: "de 11 a 20", value: 3 },
+      { label: "de 21 a 50", value: 4 },
+      { label: "+50", value: 5 },
+    ],
     type: "choice",
   },
   {
     question: "Como a empresa está posicionada no mercado?",
-    options: ["Internet", "Físico", "App"],
+    options: [
+      { label: "Internet", value: 1 },
+      { label: "Físico", value: 2 },
+      { label: "App", value: 3 },
+    ],
     type: "choice",
   },
   {
     question: "Sua empresa faz parte de qual segmento?",
-    options: ["Industria", "Serviços", "Varejo", "Agro"],
+    options: [
+      { label: "Industria", value: 1 },
+      { label: "Serviços", value: 2 },
+      { label: "Varejo", value: 3 },
+      { label: "Agro", value: 4 },
+    ],
     type: "choice",
   },
   {
     question:
       "Quais ferramentas você usa para gerenciar as finanças da sua empresa?",
-    options: ["Não uso nenhuma", "papel", "excel", "tenho um software"],
+    options: [
+      { label: "Não uso nenhuma", value: 1 },
+      { label: "Papel", value: 2 },
+      { label: "Excel", value: 3 },
+      { label: "Tenho um software", value: 4 },
+    ],
     type: "choice",
   },
   {
     question: "Você mistura suas finanças pessoais com as da empresa?",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
     tip: "Ex.: Usa cartão de crédito da empresa para pagar despesas pessoais",
   },
   {
     question:
       "Atualmente você utiliza indicadores-chave de desempenho (KPIs) para avaliar o sucesso da empresa?",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {
     question:
       "Quais ferramentas você usa para gerenciar as pessoas da sua empresa?",
-    options: ["Não uso nenhuma", "Papel", "Excel", "Tenho um Software"],
+    options: [
+      { label: "Não uso nenhuma", value: 1 },
+      { label: "Papel", value: 2 },
+      { label: "Excel", value: 3 },
+      { label: "Tenho um software", value: 4 },
+    ],
     type: "choice",
   },
   {
     question: "Existe alguma crise acontecendo agora?",
-    options: ["Sim", "Não"],
+    options: [
+      { label: "Sim", value: 1 },
+      { label: "Não", value: 0 },
+    ],
     type: "choice",
   },
   {

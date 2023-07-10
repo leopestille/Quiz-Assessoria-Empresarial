@@ -15,13 +15,16 @@ const Option = ({ option }) => {
 
   return (
     <div onClick={selectOption} className="option">
-      <p>{option}</p>
+      <p>{option.label}</p>
     </div>
   );
 };
 
 Option.propTypes = {
-  option: PropTypes.string.isRequired,
+  option: PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.number,
+  }).isRequired,
 };
 
 export default Option;

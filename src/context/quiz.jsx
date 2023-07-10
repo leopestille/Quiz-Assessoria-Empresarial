@@ -41,6 +41,7 @@ const quizReducer = (state, action) => {
         ...state,
         answerSelected: true,
         selectedOption: action.payload.option,
+        score: state.score + action.payload.option.value,
       };
 
     case "CHANGE_QUESTION": {
