@@ -11,6 +11,10 @@ const Question = () => {
   const handleOpenAnswerSubmit = () => {
     dispatch({ type: "SAVE_OPEN_ANSWER", payload: { answer } });
     setAnswer("");
+
+    if (quizState.currentQuestion === quizState.questions.length - 1) {
+      dispatch({ type: "CHANGE_QUESTION" });
+    }
   };
 
   const handleContinue = () => {

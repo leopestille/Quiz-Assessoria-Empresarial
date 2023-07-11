@@ -88,6 +88,18 @@ const quizReducer = (state, action) => {
       };
     }
 
+    case "SAVE_OPEN_ANSWER":
+      return {
+        ...state,
+        openAnswers: [
+          ...state.openAnswers,
+          {
+            question: state.questions[state.currentQuestion].question,
+            answer: action.payload.answer,
+          },
+        ],
+      };
+
     default:
       return state;
   }
