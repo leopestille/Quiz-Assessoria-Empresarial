@@ -13,6 +13,17 @@ const Question = () => {
     setAnswer("");
   };
 
+  const handleContinue = () => {
+    dispatch({
+      type: "SAVE_SELECTION",
+      payload: {
+        selectedOption: quizState.selectedOption,
+        questionLabel: currentQuestion.question,
+      },
+    });
+    dispatch({ type: "CHANGE_QUESTION" });
+  };
+
   return (
     <div id="question">
       <p>
@@ -42,9 +53,7 @@ const Question = () => {
         )}
       </div>
       {quizState.answerSelected && (
-        <button onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>
-          Continuar
-        </button>
+        <button onClick={handleContinue}>Continuar</button>
       )}
     </div>
   );

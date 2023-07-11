@@ -12,6 +12,7 @@ const InitialState = {
   score: 0,
   selectedOption: null,
   openAnswers: [],
+  selections: [],
 };
 
 const quizReducer = (state, action) => {
@@ -70,11 +71,22 @@ const quizReducer = (state, action) => {
       };
     }
 
-    case "SAVE_OPEN_ANSWER":
+    case "SAVE_SELECTION": {
+      const { questionLabel, selectedOption } = action.payload;
+
+      // Adicionar a nova seleção ao array existente de seleções
       return {
         ...state,
-        openAnswers: [...state.openAnswers, action.payload.answer],
+        selections: [
+          ...state.selections,
+          {
+            label: questionLabel,
+            answer: selectedOption.label,
+            value: selectedOption.value,
+          },
+        ],
       };
+    }
 
     default:
       return state;
