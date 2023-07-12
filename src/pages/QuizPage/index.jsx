@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth";
 import { QuizContext } from "../../context/quiz";
 import Welcome from "../../components/Welcome/Welcome";
 import Question from "../../components/Question/Question";
-import PDFdownloadButton from "../../components/pdfDownloadButton/pdfDownloadButton";
+import End from "../../components/End/End";
 
 const QuizPage = () => {
   //const { authenticated } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const QuizPage = () => {
       <h1>Quiz DataInsight</h1>
       {quizState.gameStage === "Start" && <Welcome />}
       {quizState.gameStage === "Playing" && <Question />}
-      {quizState.gameStage === "End" && <PDFdownloadButton />}
+      {quizState.gameStage === "End" && <End />}
     </div>
   );
 };

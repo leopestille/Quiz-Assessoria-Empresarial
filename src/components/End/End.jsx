@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import { QuizContext } from "../../context/quiz";
 
-const PDFdownloadButton = () => {
+const End = () => {
   const [{ selections, openAnswers }] = useContext(QuizContext);
 
   const generatePDF = () => {
@@ -33,7 +33,7 @@ const PDFdownloadButton = () => {
   return <button onClick={generatePDF}>Download PDF</button>;
 };
 
-PDFdownloadButton.propTypes = {
+End.propTypes = {
   selections: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
@@ -48,4 +48,4 @@ PDFdownloadButton.propTypes = {
   ),
 };
 
-export default PDFdownloadButton;
+export default End;
