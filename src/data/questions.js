@@ -6,6 +6,7 @@ const data = [
       { label: "Não", value: 5 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -15,6 +16,7 @@ const data = [
       { label: "Não", value: 5 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -24,6 +26,7 @@ const data = [
       { label: "Não", value: 5 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -33,6 +36,7 @@ const data = [
       { label: "Não", value: 5 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -45,6 +49,7 @@ const data = [
       { label: "+50", value: 10 },
     ],
     type: "choice",
+    category: "Gestão de Pessoas",
   },
   {
     question: "Qual o faturamento da sua empresa por mês?",
@@ -56,6 +61,7 @@ const data = [
       { label: "R$ 500 mil+", value: 10 },
     ],
     type: "choice",
+    category: "Financeiro",
   },
   {
     question: "Sua empresa sofre sazonalidade?",
@@ -65,6 +71,7 @@ const data = [
       { label: "Não sei o que significa", value: 2 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question: "Quantos concorrentes diretos seu negócio possui?",
@@ -76,6 +83,7 @@ const data = [
       { label: "+50", value: 10 },
     ],
     type: "choice",
+    category: "Comercial",
   },
   {
     question: "Como a empresa está posicionada no mercado?",
@@ -85,6 +93,7 @@ const data = [
       { label: "App", value: 6 },
     ],
     type: "choice",
+    category: "Comercial",
   },
   {
     question: "Sua empresa faz parte de qual segmento?",
@@ -95,6 +104,7 @@ const data = [
       { label: "Agro", value: 8 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -106,6 +116,7 @@ const data = [
       { label: "Tenho um software", value: 8 },
     ],
     type: "choice",
+    category: "Financeiro",
   },
   {
     question: "Você mistura suas finanças pessoais com as da empresa?",
@@ -115,6 +126,7 @@ const data = [
     ],
     type: "choice",
     tip: "Ex.: Usa cartão de crédito da empresa para pagar despesas pessoais",
+    category: "Finanças",
   },
   {
     question:
@@ -124,6 +136,7 @@ const data = [
       { label: "Não", value: 5 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
@@ -135,6 +148,7 @@ const data = [
       { label: "Tenho um software", value: 8 },
     ],
     type: "choice",
+    category: "Gestão de Pessoas",
   },
   {
     question: "Existe alguma crise acontecendo agora?",
@@ -143,11 +157,13 @@ const data = [
       { label: "Não", value: 10 },
     ],
     type: "choice",
+    category: "Diretivo",
   },
   {
     question:
       "Em 1 frase, como você descreveria a cultura organizacional do seu negócio.",
     type: "open",
+    category: "Diretivo",
   },
 ];
 
