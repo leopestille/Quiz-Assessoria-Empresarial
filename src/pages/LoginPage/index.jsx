@@ -10,8 +10,8 @@ const LoginPage = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log("handleLogin is called");
     await login(email, password);
+    console.log("handleLogin is called");
   };
 
   return (

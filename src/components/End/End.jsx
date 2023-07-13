@@ -1,4 +1,5 @@
 import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { QuizContext } from "../../context/quiz";
@@ -8,25 +9,32 @@ const End = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    let content = "";
+
+    let data = [];
 
     if (selections) {
-      selections.forEach((selection, index) => {
-        content += `Pergunta ${index + 1}: ${
-          selection.label
-        }\nResposta Selecionada: ${selection.answer}\n\n`;
+      selections.forEach((selection) => {
+        data.push({
+          question: `${selection.label}`,
+          answer: `${selection.answer}`,
+        });
       });
     }
 
     if (openAnswers) {
-      openAnswers.forEach((openAnswer, index) => {
-        content += `Pergunta ${index + 1}: ${
-          openAnswer.question
-        }\nResposta Selecionada: ${openAnswer.answer}\n\n`;
+      openAnswers.forEach((openAnswer) => {
+        data.push({
+          question: `${openAnswer.question}`,
+          answer: `${openAnswer.answer}`,
+        });
       });
     }
 
-    doc.text(content, 10, 10);
+    doc.autoTable({
+      head: [["Pergunta", "Resposta"]],
+      body: data.map(item => [item.question, item.answer]),
+    });
+
     doc.save("questionario-data-insight.pdf");
   };
 

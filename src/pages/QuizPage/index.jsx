@@ -7,12 +7,12 @@ import Question from "../../components/Question/Question";
 import End from "../../components/End/End";
 
 const QuizPage = () => {
-  //const { authenticated } = useContext(AuthContext);
+  const { authenticated } = useContext(AuthContext);
   const [quizState, dispatch] = useContext(QuizContext);
 
-  //if (!authenticated) {
-  //  return <Navigate to="/login" replace />;
-  // }
+  if (!authenticated) {
+    return <Navigate to="/login" replace />;
+   }
 
   return (
     <div>

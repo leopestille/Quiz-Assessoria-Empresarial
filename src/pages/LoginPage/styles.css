@@ -6,6 +6,8 @@
     min-height: 100vh;
     padding: 0 1rem;
     background-color: #000000;
+    min-width: 100vw;
+    width: 100%;
 }
 
 #login .field label {
@@ -32,4 +34,3 @@
     text-align: center;
     margin-top: 1rem;
 }
-
