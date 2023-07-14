@@ -7,7 +7,7 @@ export const api = axios.create({
 export const createSession = async (email, password) => {
     try {
         const response = await api.post("/sessions", { email, password });
-        return response.data;
+        return response;
     } catch (error) {
         throw new Error(error.response.data.message);
     }
