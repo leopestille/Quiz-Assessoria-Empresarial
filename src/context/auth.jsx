@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     setLoading(false);
+    navigate("/");
   }, []);
 
   const login = async (email, password) => {
