@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { QuizContext } from "../../context/quiz";
 import { AuthContext } from "../../context/auth";
 import "./styles.css";
+import axios from "axios";
 
 const End = () => {
   const [{ selections, openAnswers, score }] = useContext(QuizContext);
@@ -16,6 +17,8 @@ const End = () => {
     const doc = new jsPDF();
 
     const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+    let userId = user.id;
 
     let data = [];
 
@@ -51,6 +54,14 @@ const End = () => {
     });
 
     doc.save("questionario-data-insight.pdf");
+
+    const pdfBase64 = doc.output("datauristring");
+    axios.patch(`http://localhost:3333/users/${userId}`, { pdfData: pdfBase64, selections }, {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+    });
+
   };
 
   return (
