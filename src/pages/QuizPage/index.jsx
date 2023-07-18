@@ -10,9 +10,9 @@ const QuizPage = () => {
   const { authenticated } = useContext(AuthContext);
   const [quizState, dispatch] = useContext(QuizContext);
 
-  if (!authenticated) {
+  if (authenticated === false) {
     return <Navigate to="/login" replace />;
-   }
+}
 
   return (
     <div>

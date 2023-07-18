@@ -56,7 +56,7 @@ const End = () => {
     doc.save("questionario-data-insight.pdf");
 
     const pdfBase64 = doc.output("datauristring");
-    const url = `${process.env.REACT_APP_API_URL}/users/${userId}`;
+    const url = `${process.env.VITE_APP_API_URL}/users/${userId}`;
     axios.patch(url, { pdfData: pdfBase64, selections }, {
   headers: {
     'Authorization': `Bearer ${token}`
