@@ -52,7 +52,7 @@
 /* Para smartphones */
 @media screen and (max-width: 480px) {
     #login .form {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     #login .field input {
