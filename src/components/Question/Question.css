@@ -1,25 +1,96 @@
 #question {
-    background-color: #003479;
-    border-radius: 1rem;
-    padding: 2rem;
-    width: 500px;    
+  background-color: #003479;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 500px;
+}
+
+#question p {
+  margin-bottom: 1rem;
+}
+
+#question h2 {
+  margin-bottom: 2rem;
+}
+
+#question button {
+  border: 2px solid #fff;
+  margin: 1rem;
+}
+
+#question input {
+  border-radius: 10px;
+  padding: 5px;
+  color: black;
+}
+
+#question {
+  background-color: #003479;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+#question p {
+  margin-bottom: 1rem;
+}
+
+#question h2 {
+  margin-bottom: 2rem;
+}
+
+#question button {
+  border: 2px solid #fff;
+  margin: 1rem;
+}
+
+#question input {
+  border-radius: 10px;
+  padding: 5px;
+  color: black;
+  width: 90%;
+  /* Adicionado para garantir que o input não estenda além do contêiner */
+}
+
+/* Para tablets */
+@media screen and (max-width: 768px) {
+  #question {
+    padding: 1rem;
   }
-  
-  #question p {
-    margin-bottom: 1rem;
-  }
-  
+
   #question h2 {
-    margin-bottom: 2rem;
+    font-size: 16px;
+    /* Ajuste conforme necessário */
   }
-  
+
   #question button {
-    border: 2px solid #fff;
-    margin: 1rem;
+    margin: 0.5rem;
   }
 
   #question input {
-    border-radius: 10px;
-    padding: 5px;
-    color: black;
+    padding: 3px;
+    font-size: 14px;
   }
+}
+
+/* Para smartphones */
+@media screen and (max-width: 480px) {
+  #question {
+    padding: 0.5rem;
+  }
+
+  #question h2 {
+    font-size: 14px;
+    /* Ajuste conforme necessário */
+  }
+
+  #question button {
+    margin: 0.25rem;
+  }
+
+  #question input {
+    padding: 2px;
+    font-size: 12px;
+  }
+}
