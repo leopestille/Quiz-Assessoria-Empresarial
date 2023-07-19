@@ -29,7 +29,7 @@ const AppRoutes = () => {
         />
         <Route
           exact
-          path="/"
+          path="/quiz"
           element={
             <AuthProvider>
               <QuizProvider>
