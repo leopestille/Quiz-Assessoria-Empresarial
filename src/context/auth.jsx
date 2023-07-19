@@ -67,8 +67,7 @@ export const AuthProvider = ({ children }) => {
       if (err.message) {
         setErrorMessage(err.message);
       }
-    }
-    navigate("/login");
+    }    
   };
 
   const clearError = () => {
