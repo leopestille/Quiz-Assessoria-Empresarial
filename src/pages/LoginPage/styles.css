@@ -1,4 +1,5 @@
 #login {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +41,7 @@
 /* Para tablets */
 @media screen and (max-width: 768px) {
     #login .form {
-        padding: 2rem;
+        padding: 1rem;
     }
 
     #login .field input {
