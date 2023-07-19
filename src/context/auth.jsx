@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     setLoading(false);
-    navigate("/");
+    navigate("/quiz");
   }, []);
 
   const login = async (email, password) => {
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
         setUser(response.data.user);
         console.log(setUser(response.data.user));
 
-        navigate("/");
+        navigate("/quiz");
       }
     } catch (err) {
       if (err.message) {
