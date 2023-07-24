@@ -23,6 +23,7 @@ const Question = () => {
       payload: {
         selectedOption: quizState.selectedOption,
         questionLabel: currentQuestion.question,
+        category: currentQuestion.category
       },
     });
     dispatch({ type: "CHANGE_QUESTION" });

@@ -72,14 +72,14 @@ const quizReducer = (state, action) => {
     }
 
     case "SAVE_SELECTION": {
-      const { questionLabel, selectedOption } = action.payload;
+      const { questionLabel, selectedOption, category } = action.payload;
 
-      // Adicionar a nova seleção ao array existente de seleções
       return {
         ...state,
         selections: [
           ...state.selections,
           {
+            category,
             label: questionLabel,
             answer: selectedOption.label,
             value: selectedOption.value,
