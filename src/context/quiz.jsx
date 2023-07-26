@@ -13,6 +13,7 @@ const InitialState = {
   selectedOption: null,
   openAnswers: [],
   selections: [],
+  categoryScores: {},
 };
 
 const quizReducer = (state, action) => {
@@ -71,21 +72,62 @@ const quizReducer = (state, action) => {
       };
     }
 
-    case "SAVE_SELECTION": {
-      const { questionLabel, selectedOption, category } = action.payload;
+    case "PREVIOUS_QUESTION": {
+      const previousQuestion = state.currentQuestion - 1;
 
       return {
         ...state,
-        selections: [
-          ...state.selections,
-          {
-            category,
-            label: questionLabel,
+        currentQuestion: previousQuestion,
+      };
+    }
+
+    case "SAVE_SELECTION": {
+      const { questionLabel, selectedOption, category } = action.payload;
+
+      const existingSelectionIndex = state.selections.findIndex(
+        selection => selection.label === questionLabel
+      );
+
+      const newCategoryScore = (state.categoryScores[category] || 0) + selectedOption.value;
+
+      let newState;
+
+      if (existingSelectionIndex > -1) {
+        newState =  {
+          ...state,
+          selections: state.selections.map((selection, index) => 
+          index === existingSelectionIndex
+          ? {
+            ...selection,
             answer: selectedOption.label,
             value: selectedOption.value,
-          },
-        ],
-      };
+          }
+          : selection
+          ),
+          categoryScores: {
+            ...state.categoryScores,
+            [category]: newCategoryScore,
+          }
+        };
+      } else {
+        newState = {
+          ...state,
+          selections: [
+            ...state.selections,
+            {
+              category,
+              label: questionLabel,
+              answer: selectedOption.label,
+              value: selectedOption.value,
+            },
+          ],
+          categoryScores: {
+            ...state.categoryScores,
+            [category]: newCategoryScore,
+          }
+        };
+      }
+      return newState;
     }
 
     case "SAVE_OPEN_ANSWER":

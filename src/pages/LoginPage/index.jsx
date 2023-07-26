@@ -1,17 +1,22 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 
 const LoginPage = () => {
-  const { login, errorMessage } = useContext(AuthContext);
+  const { login, errorMessage, clearMessageError } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    return () => {
+      clearMessageError();
+    };
+  }, []);
+  
   const handleLogin = async (event) => {
     event.preventDefault();
     await login(email, password);
-    console.log("handleLogin is called");
   };
 
   return (

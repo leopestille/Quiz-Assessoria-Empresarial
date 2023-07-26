@@ -1,17 +1,20 @@
+import RadarChart from "../RadarChart/RadarChart";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import PropTypes from "prop-types";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { QuizContext } from "../../context/quiz";
 import { AuthContext } from "../../context/auth";
 import "./styles.css";
 import axios from "axios";
 
 const End = () => {
-  const [{ selections, openAnswers, score }] = useContext(QuizContext);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [{ selections, openAnswers, categoryScores }] = useContext(QuizContext);
   const authContext = useContext(AuthContext);
-  const logout = authContext.logout;   
+  const logout = authContext.logout;
+  const radarChartRef = useRef(null);
+  const labels = Object.keys(categoryScores);
+  const data = Object.values(categoryScores);   
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -40,18 +43,12 @@ const End = () => {
       });
     }
 
-    const userProblem = score <= 67
-    ? `O problema da ${user.name} é DIRETIVO`
-    : `O problema da ${user.name} é Gestão de Pessoas`;
+     doc.text(`Nome do Usuário: ${user.name}`, 10, 10);    
 
-    doc.text(`Nome do Usuário: ${user.name}`, 10, 10);
-    doc.text(userProblem, 10, 20);
-
-    doc.autoTable({
-      head: [["Pergunta", "Resposta"]],
-      body: data.map(item => [item.question, item.answer]),
-      startY: 30
-    });
+    if (radarChartRef.current) {
+      const imageUrl = radarChartRef.current.toDataURL("image/png");
+      doc.addImage(imageUrl, "PNG", 10, 30, 180, 160);
+    }
 
     doc.save("questionario-data-insight.pdf");
 
@@ -68,19 +65,13 @@ const End = () => {
   return (
     <div id="end-container">
       <p>
-        {score <= 67 
-          ? `O problema da ${user.name} é DIRETIVO` 
-          : `O problema da ${user.name} é Gestão de Pessoas`
-        }
-      </p>
-      <p>
         Clique no botão abaixo para fazer o download dos resultados do seu Quiz.
       </p>
       <div className="button-container">
-      <button onClick={generatePDF}>Download PDF</button>
-      <button onClick={logout} >Sair</button>
+        <button onClick={generatePDF}>Download PDF</button>
+        <button onClick={logout}>Sair</button>
+        <RadarChart ref={radarChartRef} labels={labels} data={data} />
       </div>
-      
     </div>
   );
 };

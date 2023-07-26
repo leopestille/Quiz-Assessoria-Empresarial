@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_APP_API_URL,
+  baseURL: import.meta.env.LOCAL_TEST_API_URL,
 });
 
 export const createSession = async (email, password) => {
@@ -18,6 +18,8 @@ export const createUser = async (name, email, password) => {
         const response = await api.post("/users", { name, email, password });
         return response.data;
     } catch (error) {
-        throw new Error(error.response.data.message);
+        throw new Error(
+          error.response ? error.response.data.message : error.message
+        );
     }
 }

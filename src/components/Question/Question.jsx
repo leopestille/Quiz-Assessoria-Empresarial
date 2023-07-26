@@ -29,6 +29,10 @@ const Question = () => {
     dispatch({ type: "CHANGE_QUESTION" });
   };
 
+  const handlePrevious = () => {
+    dispatch({ type: "PREVIOUS_QUESTION" });
+  };
+
   return (
     <div id="question">
       <p>
@@ -57,6 +61,9 @@ const Question = () => {
           ))
         )}
       </div>
+      {quizState.currentQuestion > 0 && (
+        <button onClick={handlePrevious}>Voltar</button>
+      )}
       {quizState.answerSelected && (
         <button onClick={handleContinue}>Continuar</button>
       )}
