@@ -1,4 +1,4 @@
-import { useEffect, useRef, forwardRef } from "react";
+import { useEffect, forwardRef } from "react";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
@@ -43,9 +43,13 @@ const RadarChart = forwardRef(({ data, labels }, ref) => {
                     },
                     suggestedMax: 100,
                     pointLabels: {
+                      color: "rgb(0, 0, 0)",
                       font: {
                         size: 18,                        
                       }
+                    },
+                    grid: {
+                      color: "rgb(0, 0, 0)",
                     }
                 }
             },
