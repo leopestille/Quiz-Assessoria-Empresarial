@@ -18,6 +18,8 @@ export const createUser = async (name, email, password) => {
         const response = await api.post("/users", { name, email, password });
         return response.data;
     } catch (error) {
-        throw new Error(error.response.data.message);
+        throw new Error(
+          error.response ? error.response.data.message : error.message
+        );
     }
 }

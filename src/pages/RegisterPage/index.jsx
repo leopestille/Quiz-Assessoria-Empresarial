@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth";
 import "./styles.css";
 import { Link } from "react-router-dom";
@@ -8,8 +8,14 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { errorMessage, register } = useContext(AuthContext);
+  const { errorMessage, register, clearMessageError } = useContext(AuthContext);
 
+  useEffect(() => {
+    return () => {
+      clearMessageError();
+    };
+  }, []);
+    
   const handleRegister = async (event) => {
     event.preventDefault();
     register(name, email, password);

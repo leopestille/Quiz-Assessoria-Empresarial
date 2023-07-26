@@ -24,6 +24,10 @@ export const AuthProvider = ({ children }) => {
     navigate("/quiz");
   }, []);
 
+  const clearMessageError = () => {
+    setErrorMessage("");
+  };
+
   const login = async (email, password) => {
     try {
       const response = await createSession(email, password);
@@ -68,11 +72,7 @@ export const AuthProvider = ({ children }) => {
         setErrorMessage(err.message);
       }
     }    
-  };
-
-  const clearError = () => {
-    setErrorMessage(null);
-  };
+  };  
 
   return (
     <AuthContext.Provider
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
         register,
         logout,
         errorMessage,
-        clearError,
+        clearMessageError,
       }}
     >
       {children}
