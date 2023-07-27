@@ -126,7 +126,7 @@ const data = [
       "Você faz uso de análise de dados para planejar suas campanhas de marketing?",
     options: [
       { label: "Não", value: 0 },
-      { label: "Sim, me fornecem os resultados", value: 10 },
+      { label: "Sim", value: 10 },
     ],
     type: "choice",
     category: "Marketing",
@@ -396,9 +396,9 @@ const data = [
   {
     question: "Você está satisfeito com o seu retorno sobre o investimento?",
     options: [
-      { label: "Não sei qual é o retorno", value: 0 },
-      { label: "Sim", value: 5 },
-      { label: "Não", value: 10 },
+      { label: "Não sei", value: 0 },
+      { label: "Não", value: 5 },
+      { label: "Sim", value: 10 },
     ],
     type: "choice",
     category: "Financeiro",
@@ -461,10 +461,10 @@ const data = [
     question: "Qual é a sua estratégia de gestão de riscos financeiros?",
     options: [
       { label: "Não possuo", value: 0 },
-      { label: "Reserva de Emergência", value: 4 },
-      { label: "Saldo disponível (Capital de Giro)", value: 6 },
-      { label: "Margem para investimentos", value: 8 },
-      { label: "Investimento com liquidez imediata", value: 10 },
+      { label: "Saldo disponível (Capital de Giro)", value: 4 },
+      { label: "Margem para investimentos", value: 6 },
+      { label: "Investimento com liquidez imediata", value: 8 },
+      { label: "Reserva de Emergência", value: 10 },
     ],
     type: "choice",
     category: "Financeiro",
@@ -563,8 +563,9 @@ const data = [
     question: "Como você acompanha as tendências de mercado?",
     options: [
       { label: "Não acompanho", value: 0 },
-      { label: "Terceirizada", value: 5 },
-      { label: "Interna", value: 10 },
+      { label: "Jornais e Revistas", value: 4 },
+      { label: "Internet", value: 6 },
+      { label: "Recebo Relatório de Empresa especializada", value: 10 },
     ],
     type: "choice",
     category: "Marketing",
@@ -633,7 +634,7 @@ const data = [
     question: "Quais são suas estratégias de retenção de clientes?",
     options: [
       { label: "Não temos", value: 0 },
-      { label: "Programa de fidelidade", value: 4 },
+      { label: "Preço Baixo", value: 4 },
       { label: "Comunicação Personalizada", value: 6 },
       { label: "Atendimento excepcional", value: 10 },
     ],
