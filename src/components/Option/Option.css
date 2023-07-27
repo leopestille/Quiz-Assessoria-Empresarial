@@ -10,6 +10,7 @@
   
   .option:hover {
     opacity: 1;
+    background-color: rgb(0, 128, 0);
   }
   
   #options-container .option p {
