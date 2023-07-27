@@ -5,7 +5,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 Chart.register(ChartDataLabels);
 Chart.defaults.font.size = 16;
 
-const RadarChart = forwardRef(({ data, labels }, ref) => {
+const RadarChart = forwardRef(({ data, labels, label }, ref) => {
   const canvasRef = ref;
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const RadarChart = forwardRef(({ data, labels }, ref) => {
             labels,
             datasets: [
               {
+                label,
                 data,
                 backgroundColor: [
                   "rgb(147, 112, 219)",                  
@@ -42,6 +43,7 @@ const RadarChart = forwardRef(({ data, labels }, ref) => {
                         display: false
                     },
                     suggestedMax: 100,
+                    suggestedMin: 0,
                     pointLabels: {
                       color: "rgb(0, 0, 0)",
                       font: {

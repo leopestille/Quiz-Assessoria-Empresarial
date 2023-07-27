@@ -14,7 +14,8 @@ const End = () => {
   const logout = authContext.logout;
   const radarChartRef = useRef(null);
   const labels = Object.keys(categoryScores);
-  const data = Object.values(categoryScores);   
+  const data = Object.values(categoryScores);
+  const username = JSON.parse(localStorage.getItem("user")).name;   
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -22,6 +23,7 @@ const End = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
     let userId = user.id;
+    
 
     let data = [];
 
@@ -52,9 +54,8 @@ const End = () => {
 
     doc.save("questionario-data-insight.pdf");
 
-    const pdfBase64 = doc.output("datauristring");
-    const url = `${import.meta.env.VITE_APP_API_URL}/users/${userId}`;
-    axios.patch(url, { pdfData: pdfBase64, selections }, {
+    const url = `${import.meta.env.VITE_APP_API_URL}users/${userId}`;
+    axios.patch(url, { selections }, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -70,7 +71,12 @@ const End = () => {
       <div className="button-container">
         <button onClick={generatePDF}>Download PDF</button>
         <button onClick={logout}>Sair</button>
-        <RadarChart ref={radarChartRef} labels={labels} data={data} />
+        <RadarChart
+          ref={radarChartRef}
+          labels={labels}
+          data={data}
+          label={username}
+        />
       </div>
     </div>
   );
