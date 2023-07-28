@@ -74,9 +74,11 @@ const RegisterPage = () => {
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}{" "}
         {/* Exibe a mensagem de erro somente se houver uma mensagem */}
+        <div className="link-container">
         <Link to="/login">
           <p>Faça Login</p>
         </Link>
+        </div>
         <div className="actions">
           <button disabled={!isFormValid()} type="submit">
             Cadastrar
