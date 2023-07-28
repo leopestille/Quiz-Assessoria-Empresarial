@@ -145,7 +145,7 @@ const data = [
       "A Empresa está em conformidade com todas as regulamentações do setor?",
     options: [
       { label: "Não sei", value: 0 },
-      { label: "Nunca falei sobre isso meus advogados", value: 4 },
+      { label: "Nunca falei sobre isso com meus advogados", value: 4 },
       { label: "Acho que sim", value: 6 },
       { label: "Sim", value: 10 },
     ],

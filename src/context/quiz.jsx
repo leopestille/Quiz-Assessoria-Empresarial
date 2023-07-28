@@ -48,7 +48,7 @@ const quizReducer = (state, action) => {
     case "SELECT_OPTION": {
       const selectedOption = action.payload.option;
       const isTechnologyFirstQuestion = state.currentQuestion === state.firstTechnologyQuestion;
-      const isAnswerNo = selectedOption.label === "Não";
+      const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       return {
         ...state,
