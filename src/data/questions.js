@@ -20,7 +20,7 @@ const data = [
       { label: "Sim", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "A Empresa possui um planejamento estratégico?",
@@ -104,7 +104,7 @@ const data = [
       },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "Como é o processo de tomada de decisão estratégica?",
@@ -180,7 +180,7 @@ const data = [
       { label: "Sim", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "Existe um plano de sucessão para a diretoria/Dono?",
@@ -258,7 +258,7 @@ const data = [
       { label: "Sim", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "Como a sua empresa lida com mudanças no ambiente externo?",
@@ -335,7 +335,7 @@ const data = [
       { label: "Software", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question:
@@ -413,7 +413,7 @@ const data = [
       { label: "Até 5%", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question:
@@ -480,7 +480,7 @@ const data = [
       { label: "Reuniões e feedbacks de alinhamento", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question:
@@ -546,7 +546,7 @@ const data = [
       { label: "Mais de 6", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "Como a diretoria incentiva a inovação?",
@@ -617,7 +617,7 @@ const data = [
       },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "Qual é a visão de futuro da empresa?",
@@ -693,7 +693,7 @@ const data = [
       { label: "Plano de cargos e carreiras", value: 10 },
     ],
     type: "choice",
-    category: "Recursos Humanos",
+    category: "RH",
   },
   {
     question: "A diretoria se envolve no dia a dia operacional da empresa?",
