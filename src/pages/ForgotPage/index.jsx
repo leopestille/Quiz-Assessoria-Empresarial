@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
@@ -25,7 +26,10 @@ const ForgotPage = () => {
                 required
             />
             </div>
-            <div className="field">
+            <div className="link-container">
+            <Link to="/login">
+                <p>Voltar a área de Login</p>
+            </Link>
             <button type="submit" className="btn">
                 Enviar
             </button>
