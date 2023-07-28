@@ -21,7 +21,7 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                 label,
                 data,
                 backgroundColor: [
-                  "rgb(147, 112, 219)",                  
+                  "rgba(147, 112, 219, 0.60)",                  
                 ],
               },
             ],
