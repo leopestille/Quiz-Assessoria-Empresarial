@@ -14,6 +14,7 @@ const InitialState = {
   openAnswers: [],
   selections: [],
   categoryScores: {},
+  technologyQuestionsDisabled: false,
 };
 
 const quizReducer = (state, action) => {
@@ -26,34 +27,46 @@ const quizReducer = (state, action) => {
 
     case "START_GAME": {
       let quizQuestions = [];
+      let firstTechnologyQuestion = null;
 
-      state.questions.forEach((question) => {
-        quizQuestions = [...quizQuestions, ...question.questions];
+      state.questions.forEach((question, index) => {
+        if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
+          firstTechnologyQuestion = index;
+        }
+        quizQuestions = [...quizQuestions, ...question.questions]
       });
 
       return {
         ...state,
         questions: quizQuestions,
         gameStage: STAGES[2],
+        firstTechnologyQuestion,
+        technologyQuestionsDisabled: true,
       };
     }
 
     case "SELECT_OPTION": {
       const selectedOption = action.payload.option;
+      const isTechnologyFirstQuestion = state.currentQuestion === state.firstTechnologyQuestion;
+      const isAnswerNo = selectedOption.label === "Não";
 
       return {
         ...state,
         answerSelected: true,
         selectedOption,
+        technologyQuestionsDisabled: isTechnologyFirstQuestion && isAnswerNo ? true : state.technologyQuestionsDisabled,
       };
     }
 
     case "CHANGE_QUESTION": {
-      const nextQuestion = state.currentQuestion + 1;
+      let nextQuestion = state.currentQuestion + 1;
       let endGame = false;
       let newScore = state.score;
 
-      // Add logic to update score if an answer has been selected
+      while (state.technologyQuestionsDisabled && state.questions[nextQuestion].category === "Tecnologia") {
+        nextQuestion ++;
+      }
+
       if (state.answerSelected) {
         const optionValue = state.selectedOption.value;
         newScore += optionValue;
@@ -91,6 +104,16 @@ const quizReducer = (state, action) => {
       const newCategoryScore = (state.categoryScores[category] || 0) + selectedOption.value;
 
       let newState;
+
+      if (state.technologyQuestionsDisabled && category === "Tecnologia") {
+        return {
+          ...state,
+          categoryScores: {
+            ...state.categoryScores,
+            technology: 0,
+          },
+        };
+      }
 
       if (existingSelectionIndex > -1) {
         newState =  {
