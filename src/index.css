@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: "Lato", sans-serif;
-  color: #fff;
+  color: rgb(255 255 255);
   box-sizing: border-box;
 }
 
@@ -10,7 +10,7 @@ body,
 html {
   min-height: 100vh;
   height: 100%;
-  background-color: #1c1c1c;
+  background-color: rgb(28 28 28);
 }
 
 img {
@@ -23,14 +23,14 @@ button {
   font-size: 1.2rem;
   padding: 0.8rem 1.5rem;
   background: linear-gradient(90deg,
-      rgba(0, 52, 121, 1) 0%,
-      rgba(184, 84, 232, 1) 100%);
+      rgb(0 52 121 / 1) 0%,
+      rgb(184 84 232 / 1) 100%);
   border-radius: 3rem;
   border: none;
 }
 
 button:hover {
   background: linear-gradient(90deg,
-      rgba(184, 84, 232, 1) 0%,
-      rgba(132, 53, 222, 1) 100%);
+      rgb(184 84 232 / 1) 0%,
+      rgb(132 53 222 / 1) 100%);
 }

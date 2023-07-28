@@ -5,7 +5,7 @@
     justify-content: center;
     min-height: 50vh;
     padding: 0 1rem;
-    color: #000;
+    color: rgb(0 0 0);
 }
 
 #register__form .field label {
@@ -13,12 +13,12 @@
 }
 
 #register__form .form {
-    background-color: #003479;
+    background-color: rgb(0 52 121);
     padding: 4rem;
     border-radius: 1rem;
     width: 100%;
     max-width: 480px;
-    color: #fff;
+    color: rgb(255 255 255);
 }
 
 #register__form .form a {

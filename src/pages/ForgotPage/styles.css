@@ -1,5 +1,5 @@
 .form {
-    background-color: rgb(0, 52, 121);
+    background-color: rgb(0 52 121);
     width: 100%;
     max-width: 480px;
     padding: 4rem;
@@ -10,7 +10,7 @@
     width: 75%;
     border-radius: 10px;
     padding: 5px;
-    color: rgb(0, 0, 0);
+    color: rgb(0 0 0);
 }
 
 #forgot__form .btn {
