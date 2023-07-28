@@ -47,13 +47,14 @@ const LoginPage = () => {
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}{" "}
         {/* Exibe a mensagem de erro somente se houver uma mensagem */}
-        <Link to="/register">
-          <p>Cadastre-se</p>
-        </Link>
-        |
-        <Link to="/forgot">
-          <p>Esqueceu sua senha?</p>
-        </Link>
+        <div className="link-container">
+          <Link to="/register">
+            <p>Cadastre-se</p>
+          </Link>
+          <Link to="/forgot">
+            <p>Esqueceu sua senha?</p>
+          </Link>
+        </div>
         <div className="actions">
           <button type="submit">Entrar</button>
         </div>

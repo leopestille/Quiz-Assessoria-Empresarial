@@ -50,6 +50,15 @@
     }
 }
 
+.link-container {
+    display: inline;
+}
+
+.link-container::after {
+    content: "|";
+    margin: 0 8px;
+}
+
 /* Para smartphones */
 @media screen and (max-width: 480px) {
     #login .form {
