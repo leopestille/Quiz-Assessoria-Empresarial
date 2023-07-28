@@ -12,6 +12,7 @@ const ForgotPage = () => {
         <div id="forgot__form">
         <form className="form" onSubmit={handleForgot}>
             <h1 className="forgot">Esqueceu sua senha?</h1>
+            <h2>Digite seu email abaixo para receber o link de redefinição de senha</h2>
             <div className="field">
             <label htmlFor="email">Email:</label>
             <input
