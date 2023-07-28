@@ -33,7 +33,7 @@ const quizReducer = (state, action) => {
         if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
           firstTechnologyQuestion = index;
         }
-        quizQuestions = [...quizQuestions, ...question.questions]
+        quizQuestions.push(question);
       });
 
       return {
