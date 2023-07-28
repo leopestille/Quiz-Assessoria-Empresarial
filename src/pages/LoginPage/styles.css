@@ -54,10 +54,6 @@
     display: inline;
 }
 
-.link-container::before {
-    content: "|";
-    margin: 0 8px;
-}
 
 /* Para smartphones */
 @media screen and (max-width: 480px) {
