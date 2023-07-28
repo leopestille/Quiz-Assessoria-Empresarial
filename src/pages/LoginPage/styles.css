@@ -54,6 +54,10 @@
     display: inline;
 }
 
+.link-container a:hover {
+    text-decoration:underline;
+    font-style: italic;
+}
 
 /* Para smartphones */
 @media screen and (max-width: 480px) {
