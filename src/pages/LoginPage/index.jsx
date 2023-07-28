@@ -50,6 +50,10 @@ const LoginPage = () => {
         <Link to="/register">
           <p>Cadastre-se</p>
         </Link>
+        |
+        <Link to="/forgot">
+          <p>Esqueceu sua senha?</p>
+        </Link>
         <div className="actions">
           <button type="submit">Entrar</button>
         </div>
