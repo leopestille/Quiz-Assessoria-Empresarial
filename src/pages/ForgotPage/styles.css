@@ -18,6 +18,10 @@
     margin-top: 1rem;
 }
 
+#forgot__form a {
+    text-decoration: none;
+}
+
 .link-container {
     display: inline;
 }
