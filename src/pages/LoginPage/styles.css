@@ -54,7 +54,7 @@
     display: inline;
 }
 
-.link-container::after {
+.link-container::before {
     content: "|";
     margin: 0 8px;
 }
