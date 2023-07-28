@@ -11,7 +11,12 @@ const Welcome = () => {
     <div id="welcome">
       <h2>Seja bem Vindo ao nosso quiz</h2>
       <p>Clique no botão abaixo para começar:</p>
-      <button onClick={() => dispatch({ type: "CHANGE_STAGE" })}>
+      <button
+        onClick={() => {
+          dispatch({ type: "START_GAME" });
+          dispatch({ type: "CHANGE_STAGE" });
+        }}
+      >
         Iniciar
       </button>
       <img src={Data} alt="Logo da Empresa DataInsight" />
