@@ -53,21 +53,16 @@ const quizReducer = (state, action) => {
         state.currentQuestion === state.firstTechnologyQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
-      let newQuestions = [...state.questions];
+      // Atualiza technologyQuestionsDisabled, se a condição for atendida
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
-
       if (isTechnologyFirstQuestion && isAnswerNo) {
         technologyQuestionsDisabled = true;
-        newQuestions = newQuestions.filter(
-          (question) => question.category !== "Tecnologia"
-        );
       }
 
       return {
         ...state,
         answerSelected: true,
         selectedOption,
-        questions: newQuestions,
         technologyQuestionsDisabled,
       };
     }
@@ -76,13 +71,19 @@ const quizReducer = (state, action) => {
       let nextQuestion = state.currentQuestion + 1;
       let endGame = false;
       let newScore = state.score;
+      let newQuestions = [...state.questions];
 
-      while (
-        state.technologyQuestionsDisabled &&
-        state.questions[nextQuestion] &&
-        state.questions[nextQuestion].category === "Tecnologia"
-      ) {
-        nextQuestion++;
+      if (state.technologyQuestionsDisabled) {
+        newQuestions = newQuestions.filter(
+          (question) => question.category !== "Tecnologia"
+        );
+
+        while (
+          newQuestions[nextQuestion] &&
+          newQuestions[nextQuestion].category === "Tecnologia"
+        ) {
+          nextQuestion++;
+        }
       }
 
       if (state.answerSelected) {
@@ -90,7 +91,7 @@ const quizReducer = (state, action) => {
         newScore += optionValue;
       }
 
-      if (!state.questions[nextQuestion]) {
+      if (!newQuestions[nextQuestion]) {
         endGame = true;
       }
 
@@ -100,6 +101,7 @@ const quizReducer = (state, action) => {
         gameStage: endGame ? STAGES[2] : state.gameStage,
         answerSelected: false,
         score: newScore,
+        questions: newQuestions,
       };
     }
 
