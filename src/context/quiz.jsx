@@ -72,6 +72,7 @@ const quizReducer = (state, action) => {
       let endGame = false;
       let newScore = state.score;
       let newQuestions = [...state.questions];
+      let categoryScores = { ...state.categoryScores }; // cria uma cópia do objeto categoryScores
 
       if (state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
@@ -84,6 +85,8 @@ const quizReducer = (state, action) => {
         ) {
           nextQuestion++;
         }
+
+        categoryScores["Tecnologia"] = 0; // define o valor da categoria "Tecnologia" como 0
       }
 
       if (state.answerSelected) {
@@ -102,6 +105,7 @@ const quizReducer = (state, action) => {
         answerSelected: false,
         score: newScore,
         questions: newQuestions,
+        categoryScores, // atualiza categoryScores no estado
       };
     }
 
