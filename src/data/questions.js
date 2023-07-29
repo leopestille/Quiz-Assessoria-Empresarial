@@ -60,10 +60,10 @@ const data = [
     category: "Tecnologia",
   },
   {
-    question: "A empresa tem um departamento jurídico interno ou terceirizado?",
+    question: "A empresa possui um departamento jurídico interno ou terceirizado?",
     options: [
-      { label: "Não", value: 0 },
-      { label: "Externo", value: 5 },
+      { label: "Não temos", value: 0 },
+      { label: "Terceirizado", value: 5 },
       { label: "Interno", value: 10 },
     ],
     type: "choice",

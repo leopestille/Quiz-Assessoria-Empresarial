@@ -39,6 +39,7 @@ const quizReducer = (state, action) => {
           firstTechnologyQuestion = index;
         }
       });
+      console.log(firstTechnologyQuestion);
 
       if (!state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
