@@ -71,8 +71,7 @@ const quizReducer = (state, action) => {
       let nextQuestion = state.currentQuestion + 1;
       let endGame = false;
       let newScore = state.score;
-      let newQuestions = [...state.questions];
-      let categoryScores = { ...state.categoryScores }; // cria uma cópia do objeto categoryScores
+      let newQuestions = [...state.questions];      
 
       if (state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
@@ -84,9 +83,7 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion].category === "Tecnologia"
         ) {
           nextQuestion++;
-        }
-
-        categoryScores["Tecnologia"] = 0; // define o valor da categoria "Tecnologia" como 0
+        }        
       }
 
       if (state.answerSelected) {
@@ -104,8 +101,7 @@ const quizReducer = (state, action) => {
         gameStage: endGame ? STAGES[2] : state.gameStage,
         answerSelected: false,
         score: newScore,
-        questions: newQuestions,
-        categoryScores, // atualiza categoryScores no estado
+        questions: newQuestions,        
       };
     }
 
@@ -135,7 +131,7 @@ const quizReducer = (state, action) => {
           ...state,
           categoryScores: {
             ...state.categoryScores,
-            technology: 0,
+            Tecnologia: 0,
           },
         };
       }
