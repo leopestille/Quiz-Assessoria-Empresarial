@@ -29,12 +29,14 @@ const quizReducer = (state, action) => {
       let quizQuestions = [];
       let firstTechnologyQuestion = null;
 
-      state.questions.forEach((question, index) => {
-        if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
-          firstTechnologyQuestion = index;
-        }
-        quizQuestions = [...quizQuestions, ...question.questions];
-      });
+      if (state.questions) {
+        state.questions.forEach((question, index) => {
+          if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
+            firstTechnologyQuestion = index;
+          }
+          quizQuestions = [...quizQuestions, ...question.questions];
+        });
+      }
 
       return {
         ...state,
