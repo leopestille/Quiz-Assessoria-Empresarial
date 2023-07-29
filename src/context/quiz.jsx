@@ -39,22 +39,12 @@ const quizReducer = (state, action) => {
           firstTechnologyQuestion = index;
         }
       });
-      console.log(firstTechnologyQuestion);
-
-      if (!state.technologyQuestionsDisabled) {
-        newQuestions = newQuestions.filter(
-          (question) => question.category !== "Tecnologia"
-        );
-      }
-      console.log(questions);
 
       return {
         ...state,
-        questions: newQuestions,
         gameStage: STAGES[2],
-        firstTechnologyQuestion,        
+        firstTechnologyQuestion,
       };
-      
     }
 
     case "SELECT_OPTION": {
@@ -63,14 +53,22 @@ const quizReducer = (state, action) => {
         state.currentQuestion === state.firstTechnologyQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
+      let newQuestions = [...state.questions];
+      let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
+
+      if (isTechnologyFirstQuestion && isAnswerNo) {
+        technologyQuestionsDisabled = true;
+        newQuestions = newQuestions.filter(
+          (question) => question.category !== "Tecnologia"
+        );
+      }
+
       return {
         ...state,
         answerSelected: true,
         selectedOption,
-        technologyQuestionsDisabled:
-          isTechnologyFirstQuestion && isAnswerNo
-            ? true
-            : state.technologyQuestionsDisabled,
+        questions: newQuestions,
+        technologyQuestionsDisabled,
       };
     }
 
