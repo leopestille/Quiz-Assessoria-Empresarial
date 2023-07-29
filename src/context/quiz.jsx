@@ -39,7 +39,7 @@ const quizReducer = (state, action) => {
         }
       });
 
-      if (state.technologyQuestionsDisabled) {
+      if (!state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "Tecnologia"
         );
@@ -49,8 +49,7 @@ const quizReducer = (state, action) => {
         ...state,
         questions: newQuestions,
         gameStage: STAGES[2],
-        firstTechnologyQuestion,
-        technologyQuestionsDisabled: true,
+        firstTechnologyQuestion,        
       };
     }
 

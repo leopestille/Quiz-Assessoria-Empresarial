@@ -13,8 +13,8 @@ const Welcome = () => {
       <p>Clique no botão abaixo para começar:</p>
       <button
         onClick={() => {
-          dispatch({ type: "CHANGE_STAGE" });
-          dispatch({ type: "START_GAME" });          
+          dispatch({ type: "START_GAME" });
+          dispatch({ type: "CHANGE_STAGE" });                    
         }}
       >
         Iniciar
