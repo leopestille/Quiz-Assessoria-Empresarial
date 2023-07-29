@@ -18,10 +18,11 @@ const End = () => {
   const username = JSON.parse(localStorage.getItem("user")).name;   
 
   const generatePDF = () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF("p", "pt", "a4");
 
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
+    const pageWidth = doc.internal.pageSize.getWidth();
     let userId = user.id;
     
 
@@ -45,11 +46,16 @@ const End = () => {
       });
     }
 
-     doc.text(`Nome do Usuário: ${user.name}`, 10, 10);    
+    const title = `Nome do Usuário: ${user.name}`;
+    const titleWidth = doc.getStringUnitWidth(title) * doc.internal.getFontSize();
+    const titleX = (pageWidth - titleWidth) / 2;
+    doc.text(title, titleX, 10);
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      doc.addImage(imageUrl, "PNG", 10, 30, 180, 160);
+      const imageWidth = 180;
+      const imageX = (pageWidth - imageWidth) / 2;
+      doc.addImage(imageUrl, "PNG", imageX, 30, imageWidth, 160);
     }
 
     doc.save("questionario-data-insight.pdf");
