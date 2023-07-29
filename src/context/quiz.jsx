@@ -29,6 +29,7 @@ const quizReducer = (state, action) => {
       let firstTechnologyQuestion = null;
 
       let newQuestions = [...state.questions];
+      console.log(newQuestions);
 
       state.questions.forEach((question, index) => {
         if (
@@ -44,6 +45,7 @@ const quizReducer = (state, action) => {
           (question) => question.category !== "Tecnologia"
         );
       }
+      console.log(questions);
 
       return {
         ...state,
@@ -51,6 +53,7 @@ const quizReducer = (state, action) => {
         gameStage: STAGES[2],
         firstTechnologyQuestion,        
       };
+      
     }
 
     case "SELECT_OPTION": {
