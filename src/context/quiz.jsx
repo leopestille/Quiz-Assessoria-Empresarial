@@ -26,37 +26,48 @@ const quizReducer = (state, action) => {
       };
 
     case "START_GAME": {
-      let quizQuestions = [];
       let firstTechnologyQuestion = null;
 
-      if (state.questions) {
-        state.questions.forEach((question, index) => {
-          if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
-            firstTechnologyQuestion = index;
-          }
-          quizQuestions = [...quizQuestions, question];
-        });
+      let newQuestions = [...state.questions];
+
+      state.questions.forEach((question, index) => {
+        if (
+          question.category === "Tecnologia" &&
+          firstTechnologyQuestion === null
+        ) {
+          firstTechnologyQuestion = index;
+        }
+      });
+
+      if (state.technologyQuestionsDisabled) {
+        newQuestions = newQuestions.filter(
+          (question) => question.category !== "Tecnologia"
+        );
       }
 
       return {
         ...state,
-        questions: quizQuestions,
+        questions: newQuestions,
         gameStage: STAGES[2],
         firstTechnologyQuestion,
-        technologyQuestionsDisabled: false,
+        technologyQuestionsDisabled: true,
       };
     }
 
     case "SELECT_OPTION": {
       const selectedOption = action.payload.option;
-      const isTechnologyFirstQuestion = state.currentQuestion === state.firstTechnologyQuestion;
+      const isTechnologyFirstQuestion =
+        state.currentQuestion === state.firstTechnologyQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       return {
         ...state,
         answerSelected: true,
         selectedOption,
-        technologyQuestionsDisabled: isTechnologyFirstQuestion && isAnswerNo ? true : state.technologyQuestionsDisabled,
+        technologyQuestionsDisabled:
+          isTechnologyFirstQuestion && isAnswerNo
+            ? true
+            : state.technologyQuestionsDisabled,
       };
     }
 
@@ -104,10 +115,11 @@ const quizReducer = (state, action) => {
       const { questionLabel, selectedOption, category } = action.payload;
 
       const existingSelectionIndex = state.selections.findIndex(
-        selection => selection.label === questionLabel
+        (selection) => selection.label === questionLabel
       );
 
-      const newCategoryScore = (state.categoryScores[category] || 0) + selectedOption.value;
+      const newCategoryScore =
+        (state.categoryScores[category] || 0) + selectedOption.value;
 
       let newState;
 
@@ -122,21 +134,21 @@ const quizReducer = (state, action) => {
       }
 
       if (existingSelectionIndex > -1) {
-        newState =  {
+        newState = {
           ...state,
-          selections: state.selections.map((selection, index) => 
-          index === existingSelectionIndex
-          ? {
-            ...selection,
-            answer: selectedOption.label,
-            value: selectedOption.value,
-          }
-          : selection
+          selections: state.selections.map((selection, index) =>
+            index === existingSelectionIndex
+              ? {
+                  ...selection,
+                  answer: selectedOption.label,
+                  value: selectedOption.value,
+                }
+              : selection
           ),
           categoryScores: {
             ...state.categoryScores,
             [category]: newCategoryScore,
-          }
+          },
         };
       } else {
         newState = {
@@ -153,7 +165,7 @@ const quizReducer = (state, action) => {
           categoryScores: {
             ...state.categoryScores,
             [category]: newCategoryScore,
-          }
+          },
         };
       }
       return newState;
