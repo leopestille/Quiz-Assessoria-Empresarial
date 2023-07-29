@@ -59,7 +59,7 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                 datalabels: {
                     color: "rgb(0, 0, 0)",
                     display: function(context) {
-                        return context.dataset.data[context.dataIndex] !== 0;
+                        return context.dataset.data[context.dataIndex] !== null;
                     },
                     formatter: function(value) {
                         return value

@@ -341,13 +341,16 @@ const data = [
     question:
       "Quais são as áreas com maiores desafios enfrentados pela diretoria/Dono?",
     options: [
-      { label: "Estratégica", value: 0 },
-      { label: "Gestão de Pessoas", value: 4 },
-      { label: "Marketing", value: 6 },
-      { label: "Finanças", value: 10 },
+      { label: "Financeiro", value: 10 },
+      { label: "RH", value: 7 },
+      { label: "Diretiva", value: 5 },
+      { label: "Marketing", value: 3 },
+      { label: "Tecnologia", value: 0 },
+      { label: "Contábil", value: 9 },
+      { label: "Jurídico", value: 1 },
     ],
     type: "choice",
-    category: "Diretiva",
+    category: "Diretiva",    
   },
   {
     question: "Como você mede o retorno sobre o investimento em marketing?",
