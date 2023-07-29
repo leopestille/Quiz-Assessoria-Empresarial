@@ -33,7 +33,7 @@ const quizReducer = (state, action) => {
         if (question.category === "Tecnologia" && !firstTechnologyQuestion) {
           firstTechnologyQuestion = index;
         }
-        quizQuestions.push(question);
+        quizQuestions = [...quizQuestions, ...question.questions];
       });
 
       return {
@@ -41,7 +41,7 @@ const quizReducer = (state, action) => {
         questions: quizQuestions,
         gameStage: STAGES[2],
         firstTechnologyQuestion,
-        technologyQuestionsDisabled: true,
+        technologyQuestionsDisabled: false,
       };
     }
 
@@ -63,8 +63,12 @@ const quizReducer = (state, action) => {
       let endGame = false;
       let newScore = state.score;
 
-      while (state.technologyQuestionsDisabled && state.questions[nextQuestion].category === "Tecnologia") {
-        nextQuestion ++;
+      while (
+        state.technologyQuestionsDisabled &&
+        state.questions[nextQuestion] &&
+        state.questions[nextQuestion].category === "Tecnologia"
+      ) {
+        nextQuestion++;
       }
 
       if (state.answerSelected) {
