@@ -54,8 +54,9 @@ const End = () => {
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
       const imageWidth = 360;
+      const imageHeight = 180;
       const imageX = (pageWidth - imageWidth) / 2;
-      doc.addImage(imageUrl, "PNG", imageX, 30, imageWidth, 160);
+      doc.addImage(imageUrl, "PNG", imageX, 30, imageWidth, imageHeight);
     }
 
     doc.save("questionario-data-insight.pdf");
