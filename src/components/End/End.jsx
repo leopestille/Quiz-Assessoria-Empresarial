@@ -9,20 +9,21 @@ import "./styles.css";
 import axios from "axios";
 
 const End = () => {
-  const [{ selections, categoryScores }] = useContext(QuizContext);
+  const [{ selections, openAnswers, categoryScores }] = useContext(QuizContext);
   const authContext = useContext(AuthContext);
   const logout = authContext.logout;
   const radarChartRef = useRef(null);
   const labels = Object.keys(categoryScores);
   const data = Object.values(categoryScores);
-  const username = JSON.parse(localStorage.getItem("user")).name;   
-
+  const username = JSON.parse(localStorage.getItem("user")).name;
   const generatePDF = () => {
     const doc = new jsPDF("p", "pt", "a4");
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
     const pageWidth = doc.internal.pageSize.getWidth();
-    
+    let userId = user.id;
+
+    let data = [];
     if (selections) {
       selections.forEach((selection) => {
         data.push({
@@ -31,37 +32,28 @@ const End = () => {
         });
       });
     }
-
-    const imageWidth = 300; // Largura da imagem
-    const imageHeight = 120; // Altura da imagem
+    if (openAnswers) {
+      openAnswers.forEach((openAnswer) => {
+        data.push({
+          question: `${openAnswer.question}`,
+          answer: `${openAnswer.answer}`,
+        });
+      });
+    }
     const title = `Nome do Usuário: ${user.name}`;
     const titleWidth =
       doc.getStringUnitWidth(title) * doc.internal.getFontSize();
-
-    // Posicionamento central da imagem
-    const imageX = (pageWidth - imageWidth) / 0.5;
-    const imageY = 20;
-
-    // Posicionamento central do título
     const titleX = (pageWidth - titleWidth) / 2;
-    const titleY = imageY + imageHeight + 20; // Espaço entre a imagem e o título
-
-    doc.text(title, titleX, titleY);
+    doc.text(title, titleX, 20);
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      const originalWidth = imageWidth;
-      const originalHeight = imageHeight;
-      const newHeight = originalHeight * 2;
-
-      const newWidth = (newHeight * originalWidth) / originalHeight;
-
-      doc.addImage(imageUrl, "PNG", imageX, imageY, newWidth, newHeight);
+      const imageWidth = 360;
+      const imageX = (pageWidth - imageWidth) / 2;
+      doc.addImage(imageUrl, "PNG", imageX, 30, imageWidth, 160);
     }
-
     doc.save("questionario-data-insight.pdf");
-
-    const url = `${import.meta.env.VITE_APP_API_URL}users/${user.id}`;
+    const url = `${import.meta.env.VITE_APP_API_URL}users/${userId}`;
     axios.patch(
       url,
       { selections },
@@ -72,7 +64,6 @@ const End = () => {
       }
     );
   };
-
   return (
     <div id="end-container">
       <p>
@@ -91,7 +82,6 @@ const End = () => {
     </div>
   );
 };
-
 End.propTypes = {
   selections: PropTypes.arrayOf(
     PropTypes.shape({
@@ -106,5 +96,4 @@ End.propTypes = {
     })
   ),
 };
-
 export default End;
