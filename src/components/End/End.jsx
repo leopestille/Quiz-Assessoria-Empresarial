@@ -56,7 +56,7 @@ const End = () => {
       const originalWidth = imageWidth;
       const originalHeight = imageHeight;      
       const newHeight = originalHeight * 2;
-      const imageX = 50;
+      const imageX = 30;
 
       const newWidth = (newHeight * originalWidth) / originalHeight;
 
