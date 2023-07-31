@@ -26,8 +26,6 @@ const End = () => {
     let userId = user.id;
     
 
-    let data = [];
-
     if (selections) {
       selections.forEach((selection) => {
         data.push({
