@@ -53,7 +53,7 @@ const End = () => {
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      const imageWidth = 180;
+      const imageWidth = 360;
       const imageX = (pageWidth - imageWidth) / 2;
       doc.addImage(imageUrl, "PNG", imageX, 30, imageWidth, 160);
     }
