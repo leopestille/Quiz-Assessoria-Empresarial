@@ -52,9 +52,9 @@ const End = () => {
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
       const imageWidth = 360;
-      const originalWidth = imageWidth;
-      const originalHeight = imageHeight;
       const imageHeight = 180;
+      const originalWidth = imageWidth;
+      const originalHeight = imageHeight;      
       const newHeight = originalHeight * 2;
       const imageX = (pageWidth - imageWidth) / 2;
 
