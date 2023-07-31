@@ -51,16 +51,16 @@ const End = () => {
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      const imageWidth = 360;
-      const imageHeight = 180;
+      const imageWidth = 300;
+      const imageHeight = 120;
       const originalWidth = imageWidth;
       const originalHeight = imageHeight;      
       const newHeight = originalHeight * 2;
-      const imageX = 30;
+      const imageX = 20;
 
       const newWidth = (newHeight * originalWidth) / originalHeight;
 
-      doc.addImage(imageUrl, "PNG", imageX, 30, newWidth, newHeight);
+      doc.addImage(imageUrl, "PNG", imageX, 20, newWidth, newHeight);
     }
 
     doc.save("questionario-data-insight.pdf");
