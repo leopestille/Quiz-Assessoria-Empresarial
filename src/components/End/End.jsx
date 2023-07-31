@@ -48,9 +48,7 @@ const End = () => {
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      const imageWidth = 360;
-      const imageX = (pageWidth - imageWidth) / 2;
-      doc.addImage(imageUrl, "PNG", imageX, 50, imageWidth, 200);
+      doc.addImage(imageUrl, "PNG", 10, 30, 540, 500);
     }
     doc.save("questionario-data-insight.pdf");
     const url = `${import.meta.env.VITE_APP_API_URL}users/${userId}`;
