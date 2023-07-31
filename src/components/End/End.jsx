@@ -39,7 +39,7 @@ const End = () => {
       doc.getStringUnitWidth(title) * doc.internal.getFontSize();
 
     // Posicionamento central da imagem
-    const imageX = (pageWidth - imageWidth) / 2;
+    const imageX = (pageWidth - imageWidth) / 0.5;
     const imageY = 20;
 
     // Posicionamento central do título
