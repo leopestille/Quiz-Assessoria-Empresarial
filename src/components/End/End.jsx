@@ -49,7 +49,7 @@ const End = () => {
     const title = `Nome do Usuário: ${user.name}`;
     const titleWidth = doc.getStringUnitWidth(title) * doc.internal.getFontSize();
     const titleX = (pageWidth - titleWidth) / 2;
-    doc.text(title, titleX, 10);
+    doc.text(title, titleX, 20);
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
