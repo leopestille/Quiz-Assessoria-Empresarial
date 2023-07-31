@@ -1,13 +1,31 @@
 import { useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
     
     const handleForgot = async (event) => {
         event.preventDefault();
-        console.log(email);
+        
+        try {
+            const response = await axios.post("/forgot-password", {
+                email
+            });
+            console.log(response.data)
+        } catch (error) {
+            if (error.response) {
+                console.log(error.responde.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log("ERROR:", error.message);
+            }
+            console.log(error.config);
+        }
     };
     
     return (
