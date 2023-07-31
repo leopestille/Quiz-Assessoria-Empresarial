@@ -42,7 +42,7 @@ const AppRoutes = () => {
         />
         <Route 
           exact
-          path="/forgot"
+          path="/forgot-password"
           element={
             <AuthProvider>
               <QuizProvider>
