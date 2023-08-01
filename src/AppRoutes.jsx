@@ -4,6 +4,7 @@ import QuizPage from "./pages/QuizPage/index.jsx";
 import RegisterPage from "./pages/RegisterPage/index.jsx";
 import ForgotPage from "./pages/ForgotPage/index.jsx";
 import RedirectLogin from "./pages/RedirectLogin/index.jsx";
+import ResetPasswordPage from "./pages/ResetPasswordPage/index.jsx";
 import { QuizProvider } from "./context/quiz.jsx";
 import { AuthProvider } from "./context/auth.jsx";
 
@@ -35,15 +36,14 @@ const AppRoutes = () => {
           element={
             <AuthProvider>
               <QuizProvider>
-                <QuizPage />                
+                <QuizPage />
               </QuizProvider>
             </AuthProvider>
           }
         />
-        <Route 
-          exact
-          path="/forgot-password" element={<ForgotPage />} />
+        <Route exact path="/forgot-password" element={<ForgotPage />} />
         <Route path="/" element={<RedirectLogin />} />
+        <Route path="/reset/:token" component={ResetPasswordPage} />
       </Routes>
     </Router>
   );
