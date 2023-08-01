@@ -21,15 +21,12 @@ const ForgotPage = () => {
             setMessage(response.data);            
         } catch (error) {
             if (error.response) {
-                console.log(error.responde.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                console.log(error.request);
+                setMessage(error.response.data);                
             } else {
-                console.log("ERROR:", error.message);
-            }
-            console.log(error.config);
+                 setMessage(
+                   "Ocorreu um erro ao tentar redefinir a senha. Tente novamente."
+                 );
+            }            
         }
     };
     
