@@ -5,13 +5,14 @@ import axios from "axios";
 
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
+    const URL = import.meta.env.VITE_APP_API_URL;
     
     const handleForgot = async (event) => {
         event.preventDefault();
         
         try {
             const response = await axios.post(
-              "/forgot-password",
+                `${URL}forgot-password`,
               {
                 email,
               }
