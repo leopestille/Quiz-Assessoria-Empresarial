@@ -10,9 +10,12 @@ const ForgotPage = () => {
         event.preventDefault();
         
         try {
-            const response = await axios.post("/forgot-password", {
-                email
-            });
+            const response = await axios.post(
+              "/forgot-password",
+              {
+                email,
+              }
+            );
             console.log(response.data)
         } catch (error) {
             if (error.response) {
