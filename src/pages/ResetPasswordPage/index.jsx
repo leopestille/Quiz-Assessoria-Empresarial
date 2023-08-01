@@ -8,6 +8,7 @@ const ResetPasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const { token } = useParams();
+  const URL = import.meta.env.VITE_APP_API_URL;
 
   const handleResetPassword = async (event) => {
     event.preventDefault();
@@ -18,7 +19,7 @@ const ResetPasswordPage = () => {
     }
 
     try {
-      const response = await axios.post(`/reset/${token}`, {
+      const response = await axios.post(`${URL}/reset/${token}`, {
         password: password,
       });
       setMessage(response.data);    
