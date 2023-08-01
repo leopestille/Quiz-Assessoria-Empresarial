@@ -19,9 +19,9 @@ const ResetPasswordPage = () => {
 
     try {
       const response = await axios.post(`/reset-password/${token}`, {
-        newPassword: password,
+        password: password,
       });
-      setMessage(response.data);
+      setMessage(response.data);    
     } catch (error) {
       setMessage("Ocorreu um erro ao redefinir sua senha.");
       console.error(error);
