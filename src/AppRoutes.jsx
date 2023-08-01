@@ -42,15 +42,7 @@ const AppRoutes = () => {
         />
         <Route 
           exact
-          path="/forgot-password"
-          element={
-            <AuthProvider>
-              <QuizProvider>
-                <ForgotPage />
-              </QuizProvider>
-            </AuthProvider>
-          }
-        />
+          path="/forgot-password" element={<ForgotPage />} />
         <Route path="/" element={<RedirectLogin />} />
       </Routes>
     </Router>
