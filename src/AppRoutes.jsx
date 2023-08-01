@@ -43,7 +43,7 @@ const AppRoutes = () => {
         />
         <Route exact path="/forgot-password" element={<ForgotPage />} />
         <Route path="/" element={<RedirectLogin />} />
-        <Route path="/reset/:token" component={ResetPasswordPage} />
+        <Route path="/reset/:token" element={<ResetPasswordPage />} />
       </Routes>
     </Router>
   );
