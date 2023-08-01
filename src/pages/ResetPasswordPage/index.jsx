@@ -24,7 +24,11 @@ const ResetPasswordPage = () => {
       });
       setMessage(response.data);    
     } catch (error) {
-      setMessage("Ocorreu um erro ao redefinir sua senha.");
+      if (error.response && error.response.data) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage("Ocorreu um erro ao redefinir sua senha.");
+      }
       console.error(error);
     }
   };
