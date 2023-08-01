@@ -18,7 +18,7 @@ const ResetPasswordPage = () => {
     }
 
     try {
-      const response = await axios.post(`/reset-password/${token}`, {
+      const response = await axios.post(`/reset/${token}`, {
         password: password,
       });
       setMessage(response.data);    
