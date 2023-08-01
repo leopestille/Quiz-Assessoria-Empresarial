@@ -51,7 +51,7 @@ const LoginPage = () => {
           <Link to="/register">
             <p>Cadastre-se</p>
           </Link>
-          <Link to="/forgot">
+          <Link to="/forgot-password">
             <p>Esqueceu sua senha?</p>
           </Link>
         </div>
