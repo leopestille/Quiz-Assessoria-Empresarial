@@ -1,13 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ResetPasswordPage = (props) => {
+const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
-  const token = props.match.params.token; // Assumindo que o token é passado como parâmetro na URL
+  const { token } = useParams();
 
   const handleResetPassword = async (event) => {
     event.preventDefault();
