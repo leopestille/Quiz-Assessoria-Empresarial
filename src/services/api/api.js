@@ -16,7 +16,7 @@ export const createSession = async (email, password) => {
 export const createUser = async (name, email, password) => {
     try {
         const response = await api.post("/users", { name, email, password });
-        return response.data;
+        return { data: response.data, status: response.status };
     } catch (error) {
         throw new Error(
           error.response ? error.response.data.message : error.message
