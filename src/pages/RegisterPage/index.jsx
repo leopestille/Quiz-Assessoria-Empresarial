@@ -9,6 +9,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { errorMessage, register, clearMessageError } = useContext(AuthContext);
+  const [sucessMessage, setSucessMessage] = useState("")
 
   useEffect(() => {
     return () => {
@@ -18,7 +19,10 @@ const RegisterPage = () => {
     
   const handleRegister = async (event) => {
     event.preventDefault();
-    register(name, email, password);
+    const response = await register(name, email, password);
+    if (response.status === 200) {
+      setSucessMessage("Cadastro realizado com sucesso!");      
+    }
   };
 
   const isFormValid = () => {
@@ -74,10 +78,12 @@ const RegisterPage = () => {
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}{" "}
         {/* Exibe a mensagem de erro somente se houver uma mensagem */}
+        {sucessMessage && <p className="sucess">{sucessMessage}</p>}
+        {/* Exibe a mensagem de erro somente se houver uma mensagem */}
         <div className="link-container">
-        <Link to="/login">
-          <p>Faça Login</p>
-        </Link>
+          <Link to="/login">
+            <p>Faça Login</p>
+          </Link>
         </div>
         <div className="actions">
           <button disabled={!isFormValid()} type="submit">
