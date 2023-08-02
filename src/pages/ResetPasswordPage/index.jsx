@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./styles.css";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
@@ -9,6 +10,7 @@ const ResetPasswordPage = () => {
   const [message, setMessage] = useState(null);
   const { token } = useParams();
   const URL = import.meta.env.VITE_APP_API_URL;
+  
 
   const handleResetPassword = async (event) => {
     event.preventDefault();
