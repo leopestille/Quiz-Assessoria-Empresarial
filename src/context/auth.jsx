@@ -64,9 +64,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await createUser(name, email, password);
 
-      if (response.status === "success") {
-        navigate("/login");
-      }
+      return response;
+      
     } catch (err) {
       if (err.message) {
         setErrorMessage(err.message);
