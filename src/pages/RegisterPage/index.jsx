@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { errorMessage, register, clearMessageError } = useContext(AuthContext);
-  const [sucessMessage, setSucessMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     return () => {
@@ -20,8 +20,9 @@ const RegisterPage = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
     const response = await register(name, email, password);
+    console.log(response);
     if (response && response.status === 200) {
-      setSucessMessage("Cadastro realizado com sucesso!");
+      setSuccessMessage("Cadastro realizado com sucesso!");
     }
   };
 
@@ -78,7 +79,7 @@ const RegisterPage = () => {
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}{" "}
         {/* Exibe a mensagem de erro somente se houver uma mensagem */}
-        {sucessMessage && <p className="sucess">{sucessMessage}</p>}
+        {successMessage && <p className="success">{successMessage}</p>}
         {/* Exibe a mensagem de erro somente se houver uma mensagem */}
         <div className="link-container">
           <Link to="/login">

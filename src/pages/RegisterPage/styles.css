@@ -45,3 +45,6 @@
     text-decoration: underline;
     font-style: italic;
 }
+.success {
+    color: rgb(255, 255, 255);
+}
