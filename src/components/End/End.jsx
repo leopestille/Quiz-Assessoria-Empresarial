@@ -50,7 +50,7 @@ const End = () => {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
       doc.addImage(imageUrl, "PNG", 11, 60, 540, 500);
     }
-    doc.save("questionario-data-insight.pdf");
+    doc.save(`Relatorio de Negocio - ${user.name}.pdf`);
     const url = `${import.meta.env.VITE_APP_API_URL}users/${userId}`;
     axios.patch(
       url,
