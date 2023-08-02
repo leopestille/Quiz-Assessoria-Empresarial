@@ -19,8 +19,8 @@ const RegisterPage = () => {
     
   const handleRegister = async (event) => {
     event.preventDefault();
-    const response = await register(name, email, password);
-    console.log(response);
+    const response = await register(name, email, password);    
+    
     if (response && response.status === 201) {
       setSuccessMessage("Cadastro realizado com sucesso!");
     }
