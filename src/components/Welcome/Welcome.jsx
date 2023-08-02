@@ -9,7 +9,7 @@ const Welcome = () => {
 
   return (
     <div id="welcome">
-      <h2>Seja bem Vindo ao nosso quiz</h2>
+      <h2>Seja bem Vindo ao seu relatório de negócio</h2>
       <p>Clique no botão abaixo para começar:</p>
       <button
         onClick={() => {
