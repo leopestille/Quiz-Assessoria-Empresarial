@@ -2,11 +2,11 @@ const data = [
   {
     question: "Qual foi o seu faturamento nos últimos 12 meses?",
     options: [
-      { label: "Até R$ 20.000,00", value: 0 },
-      { label: "De R$ 20.000,00 a R$ 50.000,00", value: 4 },
+      { label: "Até R$ 20.000,00", value: 10 },
+      { label: "De R$ 20.000,00 a R$ 50.000,00", value: 8 },
       { label: "De R$ 50.000,00 a R$ 100.000,00", value: 6 },
-      { label: "De R$ 100.000,00 a R$ 500.000,00", value: 8 },
-      { label: "Acima de R$ 500.000,00", value: 10 },
+      { label: "De R$ 100.000,00 a R$ 500.000,00", value: 4 },
+      { label: "Acima de R$ 500.000,00", value: 0 },
     ],
     type: "choice",
     category: "Financeiro",
@@ -144,9 +144,9 @@ const data = [
     question:
       "A Empresa está em conformidade com todas as regulamentações do setor?",
     options: [
-      { label: "Não sei", value: 0 },
-      { label: "Nunca falei sobre isso com meus advogados", value: 4 },
-      { label: "Acho que sim", value: 6 },
+      { label: "Não sei", value: 4 },
+      { label: "Nunca falei sobre isso com meus advogados", value: 6 },
+      { label: "Acho que sim", value: 0 },
       { label: "Sim", value: 10 },
     ],
     type: "choice",

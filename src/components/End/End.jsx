@@ -20,7 +20,7 @@ const End = () => {
     const doc = new jsPDF("p", "pt", "a4");
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
-    const pageWidth = doc.internal.pageSize.getWidth();
+    //const pageWidth = doc.internal.pageSize.getWidth();
     let userId = user.id;
 
     let data = [];
@@ -40,15 +40,15 @@ const End = () => {
         });
       });
     }
-    const title = `Nome do Usuário: ${user.name}`;
-    const titleWidth =
-      doc.getStringUnitWidth(title) * doc.internal.getFontSize();
-    const titleX = (pageWidth - titleWidth) / 2;
-    doc.text(title, titleX, 20);
+    //const title = `Nome do Usuário: ${user.name}`;
+    //const titleWidth =
+     // doc.getStringUnitWidth(title) * doc.internal.getFontSize();
+   // const titleX = (pageWidth - titleWidth) / 2;
+   // doc.text(title, titleX, 20);
 
     if (radarChartRef.current) {
       const imageUrl = radarChartRef.current.toDataURL("image/png");
-      doc.addImage(imageUrl, "PNG", 10, 30, 540, 500);
+      doc.addImage(imageUrl, "PNG", 10, 60, 540, 500);
     }
     doc.save("questionario-data-insight.pdf");
     const url = `${import.meta.env.VITE_APP_API_URL}users/${userId}`;
