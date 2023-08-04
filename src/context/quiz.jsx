@@ -15,6 +15,7 @@ const InitialState = {
   selections: [],
   categoryScores: {},
   technologyQuestionsDisabled: false,
+  rhQuestionsDisabled: false,
 };
 
 const quizReducer = (state, action) => {
@@ -27,6 +28,7 @@ const quizReducer = (state, action) => {
 
     case "START_GAME": {
       let firstTechnologyQuestion = null;
+      let firstRHQuestion = null;
 
       state.questions.forEach((question, index) => {
         if (
@@ -35,12 +37,18 @@ const quizReducer = (state, action) => {
         ) {
           firstTechnologyQuestion = index;
         }
+
+        if (question.category === "RH" && firstRHQuestion === null) {
+          firstRHQuestion = index;
+        }
       });
 
       return {
         ...state,
         gameStage: STAGES[2],
         firstTechnologyQuestion,
+        firstRHQuestion,
+        rhQuestionsDisabled: false,
       };
     }
 
@@ -48,12 +56,18 @@ const quizReducer = (state, action) => {
       const selectedOption = action.payload.option;
       const isTechnologyFirstQuestion =
         state.currentQuestion === state.firstTechnologyQuestion;
+      const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
+      let rhQuestionsDisabled = state.rhQuestionsDisabled;
       if (isTechnologyFirstQuestion && isAnswerNo) {
         technologyQuestionsDisabled = true;
+      }
+
+      if (isRHFirstQuestion && isAnswerNo) {
+        rhQuestionsDisabled = true;
       }
 
       return {
@@ -61,6 +75,7 @@ const quizReducer = (state, action) => {
         answerSelected: true,
         selectedOption,
         technologyQuestionsDisabled,
+        rhQuestionsDisabled,
       };
     }
 
@@ -74,6 +89,12 @@ const quizReducer = (state, action) => {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "Tecnologia"
         );
+      
+      if (state.rhQuestionsDisabled) {
+        newQuestions = newQuestions.filter(
+          (question) => question.category !== "RH"
+        );
+      }
 
         while (
           newQuestions[nextQuestion] &&
