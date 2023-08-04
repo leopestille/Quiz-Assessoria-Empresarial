@@ -64,6 +64,8 @@ const quizReducer = (state, action) => {
       const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
+      console.log(isAnswerNo);
+
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
       let rhQuestionsDisabled = state.rhQuestionsDisabled;
 
