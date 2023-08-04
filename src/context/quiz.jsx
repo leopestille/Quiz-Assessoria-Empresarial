@@ -48,6 +48,7 @@ const quizReducer = (state, action) => {
         gameStage: STAGES[2],
         firstTechnologyQuestion,
         firstRHQuestion,
+        technologyQuestionsDisabled: false,
         rhQuestionsDisabled: false,
       };
     }
