@@ -15,6 +15,7 @@ const InitialState = {
   selections: [],
   categoryScores: {},
   technologyQuestionsDisabled: false,
+  RHQuestionsDisabled: false,
 };
 
 const quizReducer = (state, action) => {
@@ -37,10 +38,19 @@ const quizReducer = (state, action) => {
         }
       });
 
+      let firstRHQuestions = null;
+
+      state.questions.forEach((question, index) => {
+        if (question.category === "RH" && firstRHQuestions === null) {
+          firstRHQuestions = index;
+        }
+      });
+
       return {
         ...state,
         gameStage: STAGES[2],
         firstTechnologyQuestion,
+        firstRHQuestions,
       };
     }
 
@@ -48,6 +58,7 @@ const quizReducer = (state, action) => {
       const selectedOption = action.payload.option;
       const isTechnologyFirstQuestion =
         state.currentQuestion === state.firstTechnologyQuestion;
+      const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestions;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
@@ -55,11 +66,17 @@ const quizReducer = (state, action) => {
         technologyQuestionsDisabled = true;
       }
 
+      let RHQuestionsDisabled = state.RHQuestionsDisabled;
+      if (isRHFirstQuestion && isAnswerNo) {
+        RHQuestionsDisabled = true;
+      }
+
       return {
         ...state,
         answerSelected: true,
         selectedOption,
         technologyQuestionsDisabled,
+        RHQuestionsDisabled,
       };
     }
 
@@ -78,8 +95,17 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion] &&
           newQuestions[nextQuestion].category === "Tecnologia"
         ) {
-          nextQuestion++;
+          nextQuestion + 1;
         }
+      }
+
+      if (state.RHQuestionsDisabled) {
+        newQuestions = newQuestions.filter((question) => question.category !== "RH");
+
+        while (
+          newQuestions[nextQuestion] && newQuestions[nextQuestion].category === "RH") {
+            nextQuestion + 1;
+          }
       }
 
       if (state.answerSelected) {
