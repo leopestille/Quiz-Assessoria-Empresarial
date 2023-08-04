@@ -4,8 +4,7 @@ import "./Welcome.css";
 import Data from "../../assets/data-insight-logo.png";
 
 const Welcome = () => {
-  const [quizState, dispatch] = useContext(QuizContext);
-  console.log(quizState);
+  const [quizState, dispatch] = useContext(QuizContext);  
 
   return (
     <div id="welcome">
