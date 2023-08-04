@@ -61,12 +61,13 @@ const quizReducer = (state, action) => {
 
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
       let rhQuestionsDisabled = state.rhQuestionsDisabled;
-      if (isTechnologyFirstQuestion && isAnswerNo) {
-        technologyQuestionsDisabled = true;
+
+      if (isTechnologyFirstQuestion) {
+        technologyQuestionsDisabled = isAnswerNo;
       }
 
-      if (isRHFirstQuestion && isAnswerNo) {
-        rhQuestionsDisabled = true;
+      if (isRHFirstQuestion) {
+        rhQuestionsDisabled = isAnswerNo;
       }
 
       return {
