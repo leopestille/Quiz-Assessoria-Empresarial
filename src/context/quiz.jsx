@@ -64,7 +64,7 @@ const quizReducer = (state, action) => {
       const isTechnologyFirstQuestion =
         state.currentQuestion === state.firstTechnologyQuestion;
       const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestion;
-      const isAnswerNo = selectedOption.label.toLowerCase() === "não";      
+      const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
       let rhQuestionsDisabled = state.rhQuestionsDisabled;
@@ -104,15 +104,6 @@ const quizReducer = (state, action) => {
         );
       }
 
-      if (state.rhQuestionsDisabled) {
-        while (
-          newQuestions[nextQuestion] &&
-          newQuestions[nextQuestion].category === "RH"
-        ) {
-          nextQuestion++;
-        }
-      }
-
       if (
         state.firstTechnologyQuestion &&
         state.firstTechnologyQuestion >= newQuestions.length
@@ -124,7 +115,6 @@ const quizReducer = (state, action) => {
           techQuestionIndex >= 0 ? techQuestionIndex : null;
         console.log(state.firstTechnologyQuestion);
       }
-      
 
       if (state.technologyQuestionsDisabled) {
         while (
