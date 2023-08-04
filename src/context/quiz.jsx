@@ -38,8 +38,10 @@ const quizReducer = (state, action) => {
         ) {
           firstTechnologyQuestion = index;
           technologyQuestionsDisabled =
-            question.selectedOption &&
-            question.selectedOption.label.toLowerCase() === "não";
+            question.type === "choice" &&
+            question.category === "Tecnologia" &&
+            question.answer &&
+            question.answer.toLowerCase() === "não";
         }
 
         if (question.category === "RH" && firstRHQuestion === null) {
