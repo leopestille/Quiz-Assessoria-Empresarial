@@ -15,7 +15,6 @@ const InitialState = {
   selections: [],
   categoryScores: {},
   technologyQuestionsDisabled: false,
-  rhQuestionsDisabled: false,
 };
 
 const quizReducer = (state, action) => {
@@ -28,8 +27,6 @@ const quizReducer = (state, action) => {
 
     case "START_GAME": {
       let firstTechnologyQuestion = null;
-      let firstRHQuestion = null;
-      let technologyQuestionsDisabled = false;
 
       state.questions.forEach((question, index) => {
         if (
@@ -37,15 +34,6 @@ const quizReducer = (state, action) => {
           firstTechnologyQuestion === null
         ) {
           firstTechnologyQuestion = index;
-          technologyQuestionsDisabled =
-            question.type === "choice" &&
-            question.category === "Tecnologia" &&
-            question.answer &&
-            question.answer.toLowerCase() === "não";
-        }
-
-        if (question.category === "RH" && firstRHQuestion === null) {
-          firstRHQuestion = index;
         }
       });
 
@@ -53,9 +41,6 @@ const quizReducer = (state, action) => {
         ...state,
         gameStage: STAGES[2],
         firstTechnologyQuestion,
-        firstRHQuestion,
-        technologyQuestionsDisabled,
-        rhQuestionsDisabled: false,
       };
     }
 
@@ -63,18 +48,11 @@ const quizReducer = (state, action) => {
       const selectedOption = action.payload.option;
       const isTechnologyFirstQuestion =
         state.currentQuestion === state.firstTechnologyQuestion;
-      const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
-      let rhQuestionsDisabled = state.rhQuestionsDisabled;
-
       if (isTechnologyFirstQuestion && isAnswerNo) {
         technologyQuestionsDisabled = true;
-      }
-
-      if (isRHFirstQuestion && isAnswerNo) {
-        rhQuestionsDisabled = true;
       }
 
       return {
@@ -82,7 +60,6 @@ const quizReducer = (state, action) => {
         answerSelected: true,
         selectedOption,
         technologyQuestionsDisabled,
-        rhQuestionsDisabled,
       };
     }
 
@@ -91,31 +68,17 @@ const quizReducer = (state, action) => {
       let endGame = false;
       let newScore = state.score;
       let newQuestions = [...state.questions];
-      let newFirstTechnologyQuestion = state.firstTechnologyQuestion;
 
       if (state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "Tecnologia"
         );
 
-        // Atualização do newFirstTechnologyQuestion caso não aponte para uma pergunta de Tecnologia válida
-        if (
-          newFirstTechnologyQuestion !== null &&
-          newFirstTechnologyQuestion >= newQuestions.length
+        while (
+          newQuestions[nextQuestion] &&
+          newQuestions[nextQuestion].category === "Tecnologia"
         ) {
-          newFirstTechnologyQuestion = null;
-        }
-      }
-
-      if (state.rhQuestionsDisabled) {
-        newQuestions = newQuestions.filter(
-          (question) => question.category !== "RH"
-        );
-        if (
-          newFirstTechnologyQuestion !== null &&
-          newQuestions[newFirstTechnologyQuestion].category !== "Tecnologia"
-        ) {
-          newFirstTechnologyQuestion++;
+          nextQuestion++;
         }
       }
 
@@ -135,7 +98,6 @@ const quizReducer = (state, action) => {
         answerSelected: false,
         score: newScore,
         questions: newQuestions,
-        firstTechnologyQuestion: newFirstTechnologyQuestion, // Atualização do firstTechnologyQuestion
       };
     }
 
