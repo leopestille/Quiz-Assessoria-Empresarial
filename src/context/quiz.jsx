@@ -101,7 +101,16 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion].category === "Tecnologia"
         ) {
           nextQuestion++;
-        }        
+        }
+        
+        if (state.rhQuestionsDisabled) {
+          while (
+            newQuestions[nextQuestion] &&
+            newQuestions[nextQuestion].category === "RH"
+          ) {
+            nextQuestion++;
+          }
+        }
       }
 
       if (state.answerSelected) {
