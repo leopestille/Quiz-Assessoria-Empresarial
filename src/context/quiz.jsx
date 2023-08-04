@@ -100,14 +100,10 @@ const quizReducer = (state, action) => {
 
         // Atualização do newFirstTechnologyQuestion caso não aponte para uma pergunta de Tecnologia válida
         if (
-          newFirstTechnologyQuestion &&
+          newFirstTechnologyQuestion !== null &&
           newFirstTechnologyQuestion >= newQuestions.length
         ) {
-          const techQuestionIndex = newQuestions.findIndex(
-            (question) => question.category === "Tecnologia"
-          );
-          newFirstTechnologyQuestion =
-            techQuestionIndex >= 0 ? techQuestionIndex : null;
+          newFirstTechnologyQuestion = null;
         }
       }
 
@@ -115,6 +111,12 @@ const quizReducer = (state, action) => {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "RH"
         );
+        if (
+          newFirstTechnologyQuestion !== null &&
+          newQuestions[newFirstTechnologyQuestion].category !== "Tecnologia"
+        ) {
+          newFirstTechnologyQuestion++;
+        }
       }
 
       if (state.answerSelected) {
