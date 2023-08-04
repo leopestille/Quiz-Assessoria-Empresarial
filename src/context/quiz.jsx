@@ -88,21 +88,27 @@ const quizReducer = (state, action) => {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "Tecnologia"
         );
-        while (
-          newQuestions[nextQuestion] &&
-          newQuestions[nextQuestion].category === "Tecnologia"
-        ) {
-          nextQuestion++;
-        }
       }
 
       if (state.rhQuestionsDisabled) {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "RH"
         );
+      }
+
+      if (state.rhQuestionsDisabled) {
         while (
           newQuestions[nextQuestion] &&
           newQuestions[nextQuestion].category === "RH"
+        ) {
+          nextQuestion++;
+        }
+      }
+
+      if (state.technologyQuestionsDisabled) {
+        while (
+          newQuestions[nextQuestion] &&
+          newQuestions[nextQuestion].category === "Tecnologia"
         ) {
           nextQuestion++;
         }
