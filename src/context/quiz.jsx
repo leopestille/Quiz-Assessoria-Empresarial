@@ -28,9 +28,6 @@ const quizReducer = (state, action) => {
     case "START_GAME": {
       let firstTechnologyQuestion = null;
 
-      let newQuestions = [...state.questions];
-      console.log(newQuestions);
-
       state.questions.forEach((question, index) => {
         if (
           question.category === "Tecnologia" &&
@@ -53,7 +50,7 @@ const quizReducer = (state, action) => {
         state.currentQuestion === state.firstTechnologyQuestion;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
 
-      // Atualiza technologyQuestionsDisabled, se a condição for atendida
+      
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
       if (isTechnologyFirstQuestion && isAnswerNo) {
         technologyQuestionsDisabled = true;
