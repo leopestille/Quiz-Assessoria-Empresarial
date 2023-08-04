@@ -91,38 +91,30 @@ const quizReducer = (state, action) => {
       let endGame = false;
       let newScore = state.score;
       let newQuestions = [...state.questions];
+      let newFirstTechnologyQuestion = state.firstTechnologyQuestion;
 
       if (state.technologyQuestionsDisabled) {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "Tecnologia"
         );
+
+        // Atualização do newFirstTechnologyQuestion caso não aponte para uma pergunta de Tecnologia válida
+        if (
+          newFirstTechnologyQuestion &&
+          newFirstTechnologyQuestion >= newQuestions.length
+        ) {
+          const techQuestionIndex = newQuestions.findIndex(
+            (question) => question.category === "Tecnologia"
+          );
+          newFirstTechnologyQuestion =
+            techQuestionIndex >= 0 ? techQuestionIndex : null;
+        }
       }
 
       if (state.rhQuestionsDisabled) {
         newQuestions = newQuestions.filter(
           (question) => question.category !== "RH"
         );
-      }
-
-      if (
-        state.firstTechnologyQuestion &&
-        state.firstTechnologyQuestion >= newQuestions.length
-      ) {
-        const techQuestionIndex = newQuestions.findIndex(
-          (question) => question.category === "Tecnologia"
-        );
-        state.firstTechnologyQuestion =
-          techQuestionIndex >= 0 ? techQuestionIndex : null;
-        console.log(state.firstTechnologyQuestion);
-      }
-
-      if (state.technologyQuestionsDisabled) {
-        while (
-          newQuestions[nextQuestion] &&
-          newQuestions[nextQuestion].category === "Tecnologia"
-        ) {
-          nextQuestion++;
-        }
       }
 
       if (state.answerSelected) {
@@ -141,6 +133,7 @@ const quizReducer = (state, action) => {
         answerSelected: false,
         score: newScore,
         questions: newQuestions,
+        firstTechnologyQuestion: newFirstTechnologyQuestion, // Atualização do firstTechnologyQuestion
       };
     }
 
