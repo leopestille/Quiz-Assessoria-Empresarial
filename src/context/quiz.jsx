@@ -29,6 +29,7 @@ const quizReducer = (state, action) => {
     case "START_GAME": {
       let firstTechnologyQuestion = null;
       let firstRHQuestion = null;
+      let technologyQuestionsDisabled = false;
 
       state.questions.forEach((question, index) => {
         if (
@@ -36,6 +37,7 @@ const quizReducer = (state, action) => {
           firstTechnologyQuestion === null
         ) {
           firstTechnologyQuestion = index;
+          technologyQuestionsDisabled = question.answer === "Não";
         }
 
         if (question.category === "RH" && firstRHQuestion === null) {
@@ -48,7 +50,7 @@ const quizReducer = (state, action) => {
         gameStage: STAGES[2],
         firstTechnologyQuestion,
         firstRHQuestion,
-        technologyQuestionsDisabled: false,
+        technologyQuestionsDisabled,
         rhQuestionsDisabled: false,
       };
     }
