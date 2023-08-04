@@ -37,7 +37,8 @@ const quizReducer = (state, action) => {
           firstTechnologyQuestion === null
         ) {
           firstTechnologyQuestion = index;
-          technologyQuestionsDisabled = question.answer === "Não";
+          technologyQuestionsDisabled = 
+            question.answer?.toLowerCase() === "não";
         }
 
         if (question.category === "RH" && firstRHQuestion === null) {
@@ -65,12 +66,12 @@ const quizReducer = (state, action) => {
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
       let rhQuestionsDisabled = state.rhQuestionsDisabled;
 
-      if (isTechnologyFirstQuestion) {
-        technologyQuestionsDisabled = isAnswerNo;
+      if (isTechnologyFirstQuestion && isAnswerNo) {
+        technologyQuestionsDisabled = true;
       }
 
-      if (isRHFirstQuestion) {
-        rhQuestionsDisabled = isAnswerNo;
+      if (isRHFirstQuestion && isAnswerNo) {
+        rhQuestionsDisabled = true;
       }
 
       return {
