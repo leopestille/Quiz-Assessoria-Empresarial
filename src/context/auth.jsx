@@ -38,8 +38,7 @@ export const AuthProvider = ({ children }) => {
 
         api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-        setUser(response.data.user);
-        console.log(setUser(response.data.user));
+        setUser(response.data.user);        
 
         navigate("/quiz");
       }

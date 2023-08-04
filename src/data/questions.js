@@ -12,6 +12,18 @@ const data = [
     category: "Financeiro",
   },
   {
+    question: "Você Possui funcionários:",
+    options: [
+      { label: "Não", value: 100 },
+      { label: "Sim, até 5", value: 0 },
+      { label: "Sim, de 6 a 10", value: 0 },
+      { label: "Sim, de 11 a 50", value: 0 },
+      { label: "Sim, mais de 50", value: 0 },
+    ],
+    type: "choice",
+    category: "RH",
+  },
+  {
     question: "Existem políticas de contratação e retenção de funcionários?",
     options: [
       { label: "Não sei o que é ", value: 0 },
