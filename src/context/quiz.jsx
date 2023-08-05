@@ -18,8 +18,6 @@ const InitialState = {
   RHQuestionsDisabled: false,
 };
 
-console.log(InitialState);
-
 const quizReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE_STAGE":
@@ -29,34 +27,10 @@ const quizReducer = (state, action) => {
       };
 
     case "START_GAME": {
-      let firstTechnologyQuestion = null;
-
-      state.questions.forEach((question, index) => {
-        if (
-          question.category === "Tecnologia" &&
-          firstTechnologyQuestion === null
-        ) {
-          firstTechnologyQuestion = index;
-        }
-      });
-
-      console.log("Index da primeira pergunta de Tecnologia:", firstTechnologyQuestion);
-
-      let firstRHQuestions = null;
-
-      state.questions.forEach((question, index) => {
-        if (question.category === "RH" && firstRHQuestions === null) {
-          firstRHQuestions = index;
-        }
-      });
-
-      console.log("Index da primeira pergunta de RH", firstRHQuestions);
-
+      
       return {
         ...state,
-        gameStage: STAGES[2],
-        firstTechnologyQuestion,
-        firstRHQuestions,
+        gameStage: STAGES[2],        
       };
     }
 
@@ -69,8 +43,7 @@ const quizReducer = (state, action) => {
         if (currentQuestion.category === "Tecnologia") {
           technologyQuestionsDisabled = true;
         }
-      }
-       console.log("Questão de tecnologia desabilitada:", technologyQuestionsDisabled);
+      }      
 
       let RHQuestionsDisabled = state.RHQuestionsDisabled;
       if (isAnswerNo) {
@@ -79,8 +52,6 @@ const quizReducer = (state, action) => {
           RHQuestionsDisabled = true;
         }
       }
-
-      console.log("Questão de rh desabilitada:", RHQuestionsDisabled);
 
       return {
         ...state,
@@ -107,8 +78,7 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion].category === "Tecnologia"
         ) {
           nextQuestion += 1;
-        }
-        console.log("Verificação de array de questões Tecnologia", newQuestions);
+        }        
       }
 
       if (state.RHQuestionsDisabled) {
@@ -117,8 +87,7 @@ const quizReducer = (state, action) => {
         while (
           newQuestions[nextQuestion] && newQuestions[nextQuestion].category === "RH") {
             nextQuestion += 1;
-          }
-        console.log("Verificação de array de questões RH", newQuestions);
+          }        
       }
 
       if (state.answerSelected) {
