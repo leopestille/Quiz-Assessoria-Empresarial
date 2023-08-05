@@ -62,21 +62,22 @@ const quizReducer = (state, action) => {
 
     case "SELECT_OPTION": {
       const selectedOption = action.payload.option;
-      const isTechnologyFirstQuestion =
-        state.currentQuestion === state.firstTechnologyQuestion;
-      const isRHFirstQuestion = state.currentQuestion === state.firstRHQuestions;
       const isAnswerNo = selectedOption.label.toLowerCase() === "não";
-
       let technologyQuestionsDisabled = state.technologyQuestionsDisabled;
-      if (isTechnologyFirstQuestion && isAnswerNo) {
-        technologyQuestionsDisabled = true;
+      if (isAnswerNo) {
+        const currentQuestion = state.questions[state.currentQuestion];
+        if (currentQuestion.category === "Tecnologia") {
+          technologyQuestionsDisabled = true;
+        }
       }
-
-      console.log("Questão de tecnologia desabilitada:", technologyQuestionsDisabled);
+       console.log("Questão de tecnologia desabilitada:", technologyQuestionsDisabled);
 
       let RHQuestionsDisabled = state.RHQuestionsDisabled;
-      if (isRHFirstQuestion && isAnswerNo) {
-        RHQuestionsDisabled = true;
+      if (isAnswerNo) {
+        const currentQuestion = state.questions[state.currentQuestion];
+        if (currentQuestion.category === "RH") {
+          RHQuestionsDisabled = true;
+        }
       }
 
       console.log("Questão de rh desabilitada:", RHQuestionsDisabled);

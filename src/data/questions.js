@@ -146,7 +146,7 @@ const data = [
   {
     question: "Você tem um plano de transformação digital?",
     options: [
-      { label: "Não", value: 0 },
+      { label: "Não Tenho", value: 0 },
       { label: "Sim", value: 10 },
     ],
     type: "choice",
@@ -457,7 +457,7 @@ const data = [
     question:
       "A empresa faz uso de alguma tecnologia emergente? (IA, Blockchain)",
     options: [
-      { label: "Não", value: 0 },
+      { label: "Não faço", value: 0 },
       { label: "Sim", value: 10 },
     ],
     type: "choice",
@@ -732,7 +732,7 @@ const data = [
   {
     question: "A empresa possui alguma estratégia de automação de processos?",
     options: [
-      { label: "Não", value: 0 },
+      { label: "Não possui", value: 0 },
       { label: "Sim", value: 10 },
     ],
     type: "choice",
