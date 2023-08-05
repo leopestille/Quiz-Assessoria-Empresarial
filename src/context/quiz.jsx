@@ -40,6 +40,8 @@ const quizReducer = (state, action) => {
         }
       });
 
+      console.log("Index da primeira pergunta de Tecnologia:", firstTechnologyQuestion);
+
       let firstRHQuestions = null;
 
       state.questions.forEach((question, index) => {
@@ -47,6 +49,8 @@ const quizReducer = (state, action) => {
           firstRHQuestions = index;
         }
       });
+
+      console.log("Index da primeira pergunta de RH", firstRHQuestions);
 
       return {
         ...state,
@@ -68,10 +72,14 @@ const quizReducer = (state, action) => {
         technologyQuestionsDisabled = true;
       }
 
+      console.log("Questão de tecnologia desabilitada:", technologyQuestionsDisabled);
+
       let RHQuestionsDisabled = state.RHQuestionsDisabled;
       if (isRHFirstQuestion && isAnswerNo) {
         RHQuestionsDisabled = true;
       }
+
+      console.log("Questão de rh desabilitada:", RHQuestionsDisabled);
 
       return {
         ...state,
@@ -99,6 +107,7 @@ const quizReducer = (state, action) => {
         ) {
           nextQuestion += 1;
         }
+        console.log("Verificação de array de questões Tecnologia", newQuestions);
       }
 
       if (state.RHQuestionsDisabled) {
@@ -108,6 +117,7 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion] && newQuestions[nextQuestion].category === "RH") {
             nextQuestion += 1;
           }
+        console.log("Verificação de array de questões RH", newQuestions);
       }
 
       if (state.answerSelected) {
