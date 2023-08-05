@@ -18,6 +18,8 @@ const InitialState = {
   RHQuestionsDisabled: false,
 };
 
+console.log(InitialState);
+
 const quizReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE_STAGE":
@@ -95,7 +97,7 @@ const quizReducer = (state, action) => {
           newQuestions[nextQuestion] &&
           newQuestions[nextQuestion].category === "Tecnologia"
         ) {
-          nextQuestion + 1;
+          nextQuestion += 1;
         }
       }
 
@@ -104,7 +106,7 @@ const quizReducer = (state, action) => {
 
         while (
           newQuestions[nextQuestion] && newQuestions[nextQuestion].category === "RH") {
-            nextQuestion + 1;
+            nextQuestion += 1;
           }
       }
 
