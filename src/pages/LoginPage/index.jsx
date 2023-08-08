@@ -3,6 +3,12 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 
+/**
+ * The `LoginPage` component is a form that allows users to login with their email and password,
+ * displaying an error message if there is one, and providing links for registration and password
+ * recovery.
+ * @returns The LoginPage component is returning a JSX element that represents a login form.
+ */
 const LoginPage = () => {
   const { login, errorMessage, clearMessageError } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -14,6 +20,10 @@ const LoginPage = () => {
     };
   }, []);
   
+  /**
+   * The handleLogin function is an asynchronous function that prevents the default behavior of an
+   * event and then calls the login function with the email and password as parameters.
+   */
   const handleLogin = async (event) => {
     event.preventDefault();
     await login(email, password);

@@ -8,6 +8,13 @@ import ResetPasswordPage from "./pages/ResetPasswordPage/index.jsx";
 import { QuizProvider } from "./context/quiz.jsx";
 import { AuthProvider } from "./context/auth.jsx";
 
+/**
+ * The AppRoutes function defines the routes for a React application using React Router.
+ * @returns The AppRoutes component is returning a Router component from React Router. Inside the
+ * Router component, there are multiple Route components defined. Each Route component specifies a path
+ * and an element to render when that path is matched. The elements being rendered are various
+ * pages/components wrapped in different providers.
+ */
 const AppRoutes = () => {
   return (
     <Router>

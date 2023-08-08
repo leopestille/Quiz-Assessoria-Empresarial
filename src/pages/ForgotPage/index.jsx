@@ -3,11 +3,21 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+/**
+ * The `ForgotPage` component is a form that allows users to enter their email to receive a password
+ * reset link, and displays a response message if there is one.
+ * @returns The `ForgotPage` component is being returned.
+ */
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState(null);
     const URL = import.meta.env.VITE_APP_API_URL;
     
+    /**
+     * The `handleForgot` function is an asynchronous function that sends a POST request to a specified
+     * URL with an email parameter, and sets the response data or error message to the `message` state
+     * variable.
+     */
     const handleForgot = async (event) => {
         event.preventDefault();
         

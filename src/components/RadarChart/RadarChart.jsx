@@ -2,9 +2,19 @@ import { useEffect, forwardRef } from "react";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
+/* `Chart.register(ChartDataLabels);` is registering the `ChartDataLabels` plugin with the `Chart`
+object from the `chart.js` library. This allows the plugin to be used in the chart configuration and
+enables the display of data labels on the chart. */
 Chart.register(ChartDataLabels);
+/* `Chart.defaults.font.size = 16;` is setting the default font size for all charts created using the
+`Chart` object from the `chart.js` library to 16 pixels. This means that all text elements in the
+chart, such as labels and tooltips, will have a font size of 16 pixels unless explicitly overridden
+in the chart configuration. */
 Chart.defaults.font.size = 16;
 
+/* The code defines a functional component called `RadarChart` using the `forwardRef` function from
+React. The component takes in three props: `data`, `labels`, and `label`. It also receives a `ref`
+object. */
 const RadarChart = forwardRef(({ data, labels, label }, ref) => {
   const canvasRef = ref;
 

@@ -4,6 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles.css";
 
+/**
+ * The `ResetPasswordPage` function is a React component that handles the reset password functionality,
+ * including form validation and API calls.
+ * @returns The code is returning a JSX element, specifically a `<div>` element with an id of
+ * "reset__form". Inside the `<div>`, there is a `<form>` element with a className of "form" and an
+ * onSubmit event handler set to `handleResetPassword`. Inside the `<form>`, there is an `<h1>` element
+ * with a className of "reset" and the text "
+ */
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -12,6 +20,13 @@ const ResetPasswordPage = () => {
   const URL = import.meta.env.VITE_APP_API_URL;
   
 
+  /**
+   * The function `handleResetPassword` is an asynchronous function that handles the logic for
+   * resetting a password, including checking if the password and confirm password match, making a POST
+   * request to a specified URL with the password, and handling any errors that occur during the
+   * process.
+   * @returns The function `handleResetPassword` does not have a return statement.
+   */
   const handleResetPassword = async (event) => {
     event.preventDefault();
 

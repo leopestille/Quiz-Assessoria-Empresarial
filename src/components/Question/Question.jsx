@@ -8,6 +8,10 @@ const Question = () => {
   const currentQuestion = quizState.questions?.[quizState.currentQuestion];
   const [answer, setAnswer] = useState("");
 
+  /**
+   * The function handles the submission of an open answer in a quiz, saving the answer, clearing the
+   * input field, and changing the current question if it is the last question.
+   */
   const handleOpenAnswerSubmit = () => {
     dispatch({ type: "SAVE_OPEN_ANSWER", payload: { answer } });
     setAnswer("");
@@ -17,6 +21,10 @@ const Question = () => {
     }
   };
 
+  /**
+   * The handleContinue function dispatches actions to save the selected option, question label, and
+   * category, and then changes the current question.
+   */
   const handleContinue = () => {
     dispatch({
       type: "SAVE_SELECTION",
@@ -29,6 +37,9 @@ const Question = () => {
     dispatch({ type: "CHANGE_QUESTION" });
   };
 
+  /**
+   * The handlePrevious function dispatches an action of type "PREVIOUS_QUESTION".
+   */
   const handlePrevious = () => {
     dispatch({ type: "PREVIOUS_QUESTION" });
   };

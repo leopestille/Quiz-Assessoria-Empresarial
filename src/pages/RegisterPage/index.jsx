@@ -3,6 +3,11 @@ import { AuthContext } from "../../context/auth";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
+/**
+ * The RegisterPage component is a form that handles user registration and displays success and error
+ * messages.
+ * @returns The RegisterPage component is returning a form for user registration.
+ */
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +22,10 @@ const RegisterPage = () => {
     };
   }, []);
     
+  /**
+   * The function "handleRegister" is an asynchronous function that handles the registration process
+   * and displays a success message if the registration is successful.
+   */
   const handleRegister = async (event) => {
     event.preventDefault();
     const response = await register(name, email, password);    
@@ -26,6 +35,11 @@ const RegisterPage = () => {
     }
   };
 
+  /**
+   * The function checks if the form is valid by ensuring that all required fields are filled and that
+   * the password and confirm password fields match.
+   * @returns a boolean value indicating whether the form is valid or not.
+   */
   const isFormValid = () => {
     return email && password && confirmPassword && password === confirmPassword;
   };

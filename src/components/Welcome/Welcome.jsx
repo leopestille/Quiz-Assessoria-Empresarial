@@ -3,6 +3,11 @@ import { QuizContext } from "../../context/quiz";
 import "./Welcome.css";
 import Data from "../../assets/data-insight-logo.png";
 
+/**
+ * The Welcome component is a React functional component that displays a welcome message, a button to
+ * start the game, and an image.
+ * @returns The Welcome component is returning a JSX element.
+ */
 const Welcome = () => {
   const [quizState, dispatch] = useContext(QuizContext);  
 
