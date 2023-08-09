@@ -16,6 +16,10 @@ const End = () => {
   const labels = Object.keys(categoryScores);
   const data = Object.values(categoryScores);
   const username = JSON.parse(localStorage.getItem("user")).name;
+  /**
+   * The `generatePDF` function generates a PDF report with user data and saves it, and also sends a
+   * PATCH request to update the user's selections.
+   */
   const generatePDF = () => {
     const doc = new jsPDF("p", "pt", "a4");
     const user = JSON.parse(localStorage.getItem("user"));
