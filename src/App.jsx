@@ -4,11 +4,11 @@ import { Analytics } from "@vercel/analytics/react";
 
 
 /**
- * The App function returns a JSX element that renders the AppRoutes component and the Analytics
- * component within a div with the className "App".
- * @returns The App component is being returned. It contains a div with the className "App" and two
- * child components - AppRoutes and Analytics.
- */
+  * A função App retorna um elemento JSX que renderiza o componente AppRoutes e o componente Analytics
+  * dentro de um div com o className "App".
+  * @returns O componente App está sendo retornado. Ele contém um div com o className "App" e dois
+  * componentes filhos - AppRoutes e Analytics.
+  */
 function App() {
   return (
     <div className="App">

@@ -9,12 +9,12 @@ import { QuizProvider } from "./context/quiz.jsx";
 import { AuthProvider } from "./context/auth.jsx";
 
 /**
- * The AppRoutes function defines the routes for a React application using React Router.
- * @returns The AppRoutes component is returning a Router component from React Router. Inside the
- * Router component, there are multiple Route components defined. Each Route component specifies a path
- * and an element to render when that path is matched. The elements being rendered are various
- * pages/components wrapped in different providers.
- */
+  * A função AppRoutes define as rotas para um aplicativo React usando o React Router.
+  * @returns O componente AppRoutes está retornando um componente Router do React Router. Dentro de
+  * Componente de roteador, existem vários componentes de rota definidos. Cada componente de rota especifica um caminho
+  * e um elemento a ser renderizado quando esse caminho for correspondido. Os elementos que estão sendo renderizados são vários
+  * páginas/componentes agrupados em diferentes provedores.
+  */
 const AppRoutes = () => {
   return (
     <Router>

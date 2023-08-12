@@ -4,29 +4,29 @@ import "./Option.css";
 import PropTypes from "prop-types";
 
 /**
- * The Option component is a React component that renders an option and dispatches an action when
- * clicked.
- * @returns The Option component is returning a div element with the className "option" and a paragraph
- * element containing the label of the option.
- */
+  * O componente Option é um componente React que renderiza uma opção e despacha uma ação quando
+  * clicou.
+  * @returns O componente Option está retornando um elemento div com o className "opção" e um parágrafo
+  * elemento contendo o rótulo da opção.
+  */
 const Option = ({ option }) => {
-  const [, dispatch] = useContext(QuizContext);
+	const [, dispatch] = useContext(QuizContext);
 
-  /**
-   * The selectOption function dispatches an action with a selected option as the payload.
-   */
-  const selectOption = () => {
-    dispatch({
-      type: "SELECT_OPTION",
-      payload: { option },
-    });
-  };
+	/**
+	 * A função selectOption despacha uma ação com uma opção selecionada como payload.
+	 */
+	const selectOption = () => {
+		dispatch({
+			type: "SELECT_OPTION",
+			payload: { option },
+		});
+	};
 
-  return (
-    <div onClick={selectOption} className="option">
-      <p>{option.label}</p>
-    </div>
-  );
+	return (
+		<div onClick={selectOption} className="option">
+			<p>{option.label}</p>
+		</div>
+	);
 };
 
 Option.propTypes = {

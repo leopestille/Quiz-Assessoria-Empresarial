@@ -7,13 +7,13 @@ import Question from "../../components/Question/Question";
 import End from "../../components/End/End";
 
 /**
- * The QuizPage component renders different components based on the game stage and user authentication
- * status.
- * @returns The QuizPage component is returning a div element containing a heading with the text "Quiz
- * DataInsight" and one of three components based on the value of the quizState.gameStage variable. If
- * the gameStage is "Start", the Welcome component is rendered. If the gameStage is "Playing", the
- * Question component is rendered. If the gameStage is "End", the End component is rendered.
- */
+  * O componente QuizPage renderiza diferentes componentes com base no estágio do jogo e na autenticação do usuário
+  * status.
+  * @returns O componente QuizPage está retornando um elemento div contendo um cabeçalho com o texto "Quiz
+  * DataInsight" e um dos três componentes com base no valor da variável quizState.gameStage. Se
+  * o gameStage é "Start", o componente Welcome é renderizado. Se o gameStage estiver "Jogando", o
+  * O componente de pergunta é renderizado. Se o gameStage for "End", o componente End será renderizado.
+  */
 const QuizPage = () => {
   const { authenticated } = useContext(AuthContext);
   const [quizState, dispatch] = useContext(QuizContext);

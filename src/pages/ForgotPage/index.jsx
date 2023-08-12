@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 /**
- * The `ForgotPage` component is a form that allows users to enter their email to receive a password
- * reset link, and displays a response message if there is one.
- * @returns The `ForgotPage` component is being returned.
- */
+  * O componente `ForgotPage` é um formulário que permite aos usuários inserir seu e-mail para receber uma senha
+  * link de redefinição e exibe uma mensagem de resposta, se houver.
+  * @returns O componente `ForgotPage` está sendo retornado.
+  */
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState(null);

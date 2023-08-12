@@ -1,19 +1,19 @@
 import axios from "axios";
 
-/* The code `export const api = axios.create({ baseURL: import.meta.env.VITE_APP_API_URL });` is
-creating an instance of the Axios library with a base URL. */
+/* O código `export const api = axios.create({ baseURL: import.meta.env.VITE_APP_API_URL });` é
+criando uma instância da biblioteca Axios com uma URL base. */
 export const api = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 });
 
 /**
- * The function `createSession` is an asynchronous function that sends a POST request to the
- * "/sessions" endpoint with the provided email and password, and returns the response.
- * @param email - The email parameter is the email address of the user trying to create a session or
- * log in.
- * @param password - The `password` parameter is the user's password that they provide when trying to
- * create a session (i.e., log in).
- * @returns The response from the API call is being returned.
+ * A função `createSession` é uma função assíncrona que envia uma requisição POST para
+ * o endpoint "/sessions" com o email e senha informados, e retorna a resposta.
+ * @param email - O parâmetro email é o endereço de email do usuário que está tentando criar uma sessão ou
+ * conectar-se.
+ * @param password - O parâmetro `password` é a senha do usuário que é  fornecida para tentar
+ * criar a sessão.
+ * @returns A resposta da chamada de API está sendo retornada.
  */
 export const createSession = async (email, password) => {
     try {
@@ -25,16 +25,16 @@ export const createSession = async (email, password) => {
 }
 
 /**
- * The function `createUser` is an asynchronous function that sends a POST request to create a new user
- * with the provided name, email, and password, and returns the response data and status.
- * @param name - The name parameter is the name of the user that you want to create.
- * @param email - The email parameter is the email address of the user that you want to create.
- * @param password - The `password` parameter is the password that the user wants to set for their
- * account.
- * @returns The `createUser` function is returning an object with two properties: `data` and `status`.
- * The `data` property contains the response data from the API call, and the `status` property contains
- * the status code of the response.
- */
+  * A função `createUser` é uma função assíncrona que envia uma solicitação POST para criar um novo usuário
+  * com o nome, e-mail e senha fornecidos e retorna os dados e o status da resposta.
+  * @param name - O parâmetro name é o nome do usuário que você deseja criar.
+  * @param email - O parâmetro email é o endereço de email do usuário que você deseja criar.
+  * @param password - O parâmetro `password` é a senha que o usuário deseja definir para
+  * conta.
+  * @returns A função `createUser` está retornando um objeto com duas propriedades: `data` e `status`.
+  * A propriedade `data` contém os dados de resposta da chamada de API e a propriedade `status` contém
+  * o código de status da resposta.
+  */
 export const createUser = async (name, email, password) => {
     try {
         const response = await api.post("/users", { name, email, password });

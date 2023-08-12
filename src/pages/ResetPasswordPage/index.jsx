@@ -5,89 +5,88 @@ import PropTypes from "prop-types";
 import "./styles.css";
 
 /**
- * The `ResetPasswordPage` function is a React component that handles the reset password functionality,
- * including form validation and API calls.
- * @returns The code is returning a JSX element, specifically a `<div>` element with an id of
- * "reset__form". Inside the `<div>`, there is a `<form>` element with a className of "form" and an
- * onSubmit event handler set to `handleResetPassword`. Inside the `<form>`, there is an `<h1>` element
- * with a className of "reset" and the text "
- */
+  * A função `ResetPasswordPage` é um componente React que lida com a funcionalidade de redefinição de senha,
+  * incluindo validação de formulário e chamadas de API.
+  * @returns O código está retornando um elemento JSX, especificamente um elemento `<div>` com um id de
+  * "reset__form". Dentro do `<div>`, há um elemento `<form>` com um className de "form" e um
+  * manipulador de eventos onSubmit definido como `handleResetPassword`. Dentro do `<form>`, existe um elemento `<h1>`
+  * com um className de "reset" e o texto "
+  */
 const ResetPasswordPage = () => {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
-  const { token } = useParams();
-  const URL = import.meta.env.VITE_APP_API_URL;
-  
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [message, setMessage] = useState(null);
+	const { token } = useParams();
+	const URL = import.meta.env.VITE_APP_API_URL;
 
-  /**
-   * The function `handleResetPassword` is an asynchronous function that handles the logic for
-   * resetting a password, including checking if the password and confirm password match, making a POST
-   * request to a specified URL with the password, and handling any errors that occur during the
-   * process.
-   * @returns The function `handleResetPassword` does not have a return statement.
-   */
-  const handleResetPassword = async (event) => {
-    event.preventDefault();
+	/**
+	 * A função `handleResetPassword` é uma função assíncrona que manipula a lógica para
+	 * redefinir uma senha, incluindo verificar se a senha e confirmar a senha correspondem, fazendo um POST
+	 * solicitar a um URL especificado com a senha e lidar com quaisquer erros que ocorram durante o
+	 * processo.
+	 * @returns A função `handleResetPassword` não possui uma declaração de retorno.
+	 */
+	const handleResetPassword = async (event) => {
+		event.preventDefault();
 
-    if (password !== confirmPassword) {
-      setMessage("As senhas não coincidem.");
-      return;
-    }
+		if (password !== confirmPassword) {
+			setMessage("As senhas não coincidem.");
+			return;
+		}
 
-    try {
-      const response = await axios.post(`${URL}reset/${token}`, {
-        password: password,
-      });
-      setMessage(response.data);    
-    } catch (error) {
-      if (error.response && error.response.data) {
-        setMessage(error.response.data);
-      } else {
-        setMessage("Ocorreu um erro ao redefinir sua senha.");
-      }
-      console.error(error);
-    }
-  };
+		try {
+			const response = await axios.post(`${URL}reset/${token}`, {
+				password: password,
+			});
+			setMessage(response.data);
+		} catch (error) {
+			if (error.response && error.response.data) {
+				setMessage(error.response.data);
+			} else {
+				setMessage("Ocorreu um erro ao redefinir sua senha.");
+			}
+			console.error(error);
+		}
+	};
 
-  return (
-    <div id="reset__form">
-      <form className="form" onSubmit={handleResetPassword}>
-        <h1 className="reset">Redefinir Senha</h1>
-        <div className="field">
-          <label htmlFor="password">Nova Senha:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="confirmPassword">Confirme a Senha:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        {message && <p className="response-message">{message}</p>}
-        <button type="submit" className="btn">
-          Redefinir Senha
-        </button>
-        <div className="link-container">
-          <Link to="/login">
-            <p>Voltar a área de Login</p>
-          </Link>
-        </div>
-      </form>
-    </div>
-  );
+	return (
+		<div id="reset__form">
+			<form className="form" onSubmit={handleResetPassword}>
+				<h1 className="reset">Redefinir Senha</h1>
+				<div className="field">
+					<label htmlFor="password">Nova Senha:</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+				</div>
+				<div className="field">
+					<label htmlFor="confirmPassword">Confirme a Senha:</label>
+					<input
+						type="password"
+						name="confirmPassword"
+						id="confirmPassword"
+						value={confirmPassword}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
+				</div>
+				{message && <p className="response-message">{message}</p>}
+				<button type="submit" className="btn">
+					Redefinir Senha
+				</button>
+				<div className="link-container">
+					<Link to="/login">
+						<p>Voltar a área de Login</p>
+					</Link>
+				</div>
+			</form>
+		</div>
+	);
 };
 
 ResetPasswordPage.propTypes = {

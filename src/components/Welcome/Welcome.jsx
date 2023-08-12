@@ -4,10 +4,10 @@ import "./Welcome.css";
 import Data from "../../assets/data-insight-logo.png";
 
 /**
- * The Welcome component is a React functional component that displays a welcome message, a button to
- * start the game, and an image.
- * @returns The Welcome component is returning a JSX element.
- */
+  * O componente Welcome é um componente funcional do React que exibe uma mensagem de boas-vindas, um botão para
+  * inicie o jogo e uma imagem.
+  * @returns O componente Welcome está retornando um elemento JSX.
+  */
 const Welcome = () => {
   const [quizState, dispatch] = useContext(QuizContext);  
 
