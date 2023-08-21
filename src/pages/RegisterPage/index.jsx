@@ -60,7 +60,7 @@ const RegisterPage = () => {
 					/>
 				</div>
 				<div className="field">
-					<label htmlFor="name">Email:</label>
+					<label htmlFor="email">Email:</label>
 					<input
 						type="email"
 						name="email"
