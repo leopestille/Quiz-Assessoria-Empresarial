@@ -1,7 +1,5 @@
 import axios from "axios";
 
-/* O código `export const api = axios.create({ baseURL: import.meta.env.VITE_APP_API_URL });` é
-criando uma instância da biblioteca Axios com uma URL base. */
 export const api = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 });
@@ -18,6 +16,7 @@ export const api = axios.create({
 export const createSession = async (email, password) => {
     try {
         const response = await api.post("/sessions", { email, password });
+        console.log(response);
         return response;
     } catch (error) {
         throw new Error(error.response.data.message);
