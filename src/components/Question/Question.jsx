@@ -60,9 +60,16 @@ const Question = () => {
 						</button>
 					</>
 				) : (
-					currentQuestion.options.map((option) => (
-						<Option option={option} key={option.label} />
-					))
+					currentQuestion.options.map((option, index) => {
+						const isSelected = quizState.selectedOption?.value === option.value;
+						return (
+							<Option
+								key={index}
+								option={option}
+								className={`option ${isSelected ? 'selected' : 'option'}`}
+							/>
+						);
+					})
 				)}
 			</div>
 			{quizState.currentQuestion > 0 && (
