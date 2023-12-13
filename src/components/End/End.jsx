@@ -8,14 +8,7 @@ import { AuthContext } from "../../context/auth";
 import "./styles.css";
 import axios from "axios";
 
-/**
-  * O componente `End` é um componente React que gera um relatório em PDF com dados do usuário, incluindo quiz
-  * seleções, e permite ao usuário baixá-lo, bem como sair do aplicativo.
-  * @returns O componente `End` está retornando elementos JSX, especificamente um elemento `div` com um id de
-  * "end-container". Dentro do `div`, há um elemento de parágrafo e um elemento `div` com uma classe de
-  * "button-container". Dentro do "button-container", existem dois botões, um com o texto
-  * "Baixar PDF" e outro com o texto "Sair" (que significa
-  */
+
 const End = () => {
 	const [{ selections, openAnswers, categoryScores }] = useContext(QuizContext);
 	const authContext = useContext(AuthContext);
@@ -24,15 +17,12 @@ const End = () => {
 	const labels = Object.keys(categoryScores);
 	const data = Object.values(categoryScores);
 	const username = JSON.parse(localStorage.getItem("user")).name;
-	/**
-	 * A função `generatePDF` gera um relatório em PDF com os dados do usuário e salva, e também envia um
-	 * Solicitação PATCH para atualizar as seleções do usuário.
-	 */
+
 	const generatePDF = () => {
 		const doc = new jsPDF("p", "pt", "a4");
 		const user = JSON.parse(localStorage.getItem("user"));
 		const token = localStorage.getItem("token");
-		//const pageWidth = doc.internal.pageSize.getWidth();
+
 		let userId = user.id;
 
 		let data = [];
@@ -52,11 +42,7 @@ const End = () => {
 				});
 			});
 		}
-		//const title = `Nome do Usuário: ${user.name}`;
-		//const titleWidth =
-		// doc.getStringUnitWidth(title) * doc.internal.getFontSize();
-		// const titleX = (pageWidth - titleWidth) / 2;
-		// doc.text(title, titleX, 20);
+
 
 		if (radarChartRef.current) {
 			const imageUrl = radarChartRef.current.toDataURL("image/png");
