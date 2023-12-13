@@ -24,29 +24,17 @@ const InitialState = {
   RHQuestionsDisabled: false,
 };
 
-/**
-  * A função `quizReducer` é responsável por lidar com diferentes ações em um jogo de quiz, como
-  * alterar a fase do jogo, iniciar o jogo, selecionar uma opção de pergunta, alterar o atual
-  * pergunta, indo para a pergunta anterior, salvando a seleção do usuário e salvando uma pergunta aberta
-  * responder.
-  * @returns A função `quizReducer` retorna um novo objeto de estado com base no tipo de ação e carga útil
-  * oferecido. O objeto de estado retornado inclui propriedades como `gameStage`, `answerSelected`,
-  * `selectedOption`, `technologyQuestionsDisabled`, `RHQuestionsDisabled`, `currentQuestion`, `score`,
-  * `questions`, `categoryScores`, `selections` e `openAnswers`. As propriedades específicas que são
-  * atualizado e
-  */
+
 const quizReducer = (state, action) => {
   switch (action.type) {
-		/* O bloco `case "CHANGE_STAGE"` faz parte da função `quizReducer` e é responsável por
-     lidar com a ação de mudar o estágio do jogo no questionário. */
+
 		case "CHANGE_STAGE":
 			return {
 				...state,
 				gameStage: STAGES[1],
 			};
 
-		/* O bloco `case "START_GAME"` faz parte da função `quizReducer` e é responsável por
-     lidar com a ação de iniciar o jogo no questionário. */
+
 		case "START_GAME": {
 			return {
 				...state,
@@ -54,8 +42,7 @@ const quizReducer = (state, action) => {
 			};
 		}
 
-		/* O bloco `case "SELECT_OPTION"` faz parte da função quizReducer e é responsável por
-     lidar com a ação de selecionar uma opção para uma pergunta no questionário. */
+
 		case "SELECT_OPTION": {
 			const selectedOption = action.payload.option;
 			const isAnswerNo = selectedOption.label.toLowerCase() === "não";
@@ -84,8 +71,7 @@ const quizReducer = (state, action) => {
 			};
 		}
 
-		/* O bloco `case "CHANGE_QUESTION"` é responsável por manipular a ação de alterar o
-     pergunta atual no questionário. */
+
 		case "CHANGE_QUESTION": {
 			let nextQuestion = state.currentQuestion + 1;
 			let endGame = false;
@@ -137,8 +123,7 @@ const quizReducer = (state, action) => {
 			};
 		}
 
-		/* O bloco `case "PREVIOUS_QUESTION"` faz parte da função quizReducer e é responsável
-     para lidar com a ação de ir para a pergunta anterior no questionário. */
+
 		case "PREVIOUS_QUESTION": {
 			const previousQuestion = state.currentQuestion - 1;
 
@@ -148,8 +133,7 @@ const quizReducer = (state, action) => {
 			};
 		}
 
-		/* O bloco `case "SAVE_SELECTION"` faz parte da função `quizReducer` e é responsável por
-     lidar com a ação de salvar a seleção do usuário para uma pergunta no questionário. */
+
 		case "SAVE_SELECTION": {
 			const { questionLabel, selectedOption, category } = action.payload;
 
@@ -210,8 +194,7 @@ const quizReducer = (state, action) => {
 			return newState;
 		}
 
-		/* O bloco `case "SAVE_OPEN_ANSWER"` faz parte da função `quizReducer` e é responsável
-     para lidar com a ação de salvar uma resposta aberta para uma pergunta no questionário. */
+
 		case "SAVE_OPEN_ANSWER":
 			return {
 				...state,
@@ -231,10 +214,7 @@ const quizReducer = (state, action) => {
 
 export const QuizContext = createContext();
 
-/**
-  * O componente QuizProvider é um wrapper que fornece um QuizContext com um valor derivado do
-  * quizReducer e InitialState para seus filhos.
-  */
+
 export const QuizProvider = ({ children }) => {
   const value = useReducer(quizReducer, InitialState);
 
