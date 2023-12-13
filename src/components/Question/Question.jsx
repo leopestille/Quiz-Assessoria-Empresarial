@@ -3,18 +3,13 @@ import { QuizContext } from "../../context/quiz";
 import Option from "../Option/Option";
 import "./Question.css";
 
-/* O componente `Question` é um componente funcional do React que renderiza uma pergunta e suas opções em
-um teste. Ele usa os ganchos `useContext` e `useState` do React para acessar e atualizar o questionário
-estado. */
+
 const Question = () => {
 	const [quizState, dispatch] = useContext(QuizContext);
 	const currentQuestion = quizState.questions?.[quizState.currentQuestion];
 	const [answer, setAnswer] = useState("");
 
-	/**
-	 * A função trata do envio de uma resposta aberta em um questionário, salvando a resposta, limpando o
-	 * campo de entrada e alterando a pergunta atual se for a última pergunta.
-	 */
+
 	const handleOpenAnswerSubmit = () => {
 		dispatch({ type: "SAVE_OPEN_ANSWER", payload: { answer } });
 		setAnswer("");
@@ -24,10 +19,7 @@ const Question = () => {
 		}
 	};
 
-	/**
-	 * A função handleContinue despacha ações para salvar a opção selecionada, o label da pergunta e a
-	 * categoria e, em seguida, altera a pergunta atual.
-	 */
+
 	const handleContinue = () => {
 		dispatch({
 			type: "SAVE_SELECTION",
@@ -40,9 +32,7 @@ const Question = () => {
 		dispatch({ type: "CHANGE_QUESTION" });
 	};
 
-	/**
-	 * A função handlePrevious despacha uma ação do tipo "PREVIOUS_QUESTION".
-	 */
+
 	const handlePrevious = () => {
 		dispatch({ type: "PREVIOUS_QUESTION" });
 	};
