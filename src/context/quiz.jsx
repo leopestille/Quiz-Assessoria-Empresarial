@@ -2,14 +2,10 @@ import { createContext, useReducer } from "react";
 import PropTypes from "prop-types";
 import questions from "../data/questions";
 
-/* A linha `const STAGES = ["Start", "Playing", "End"];` está criando um array chamado `STAGES` com
-três elementos: "Start", "Playing" e "End". Esta matriz é usada para definir os diferentes estágios de
-o jogo no aplicativo de teste. */
+
 const STAGES = ["Start", "Playing", "End"];
 
-/* O `const InitialState` está criando um objeto que representa o estado inicial do quiz
-aplicativo. Ele contém várias propriedades que armazenam diferentes informações sobre o
-estado atual do jogo de perguntas. */
+
 const InitialState = {
   gameStage: STAGES[0],
   questions,
