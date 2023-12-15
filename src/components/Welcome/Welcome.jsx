@@ -8,7 +8,7 @@ const Welcome = () => {
   const [quizState, dispatch] = useContext(QuizContext);
 
   return (
-    <div id="welcome">
+    <div className="welcome">
       <h2>Seja bem Vindo ao seu relatório de negócio</h2>
       <p>Clique no botão abaixo para começar:</p>
       <button
