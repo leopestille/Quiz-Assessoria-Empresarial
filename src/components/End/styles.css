@@ -1,8 +1,8 @@
-#end-container {
+.end-container {
     font-size: 20px;
 }
 
-#end-container p {
+.end-container p {
     margin-bottom: 15px;
 }
 

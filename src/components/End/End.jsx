@@ -61,7 +61,7 @@ const End = () => {
 		);
 	};
 	return (
-		<div id="end-container">
+		<div className="end-container">
 			<p>
 				Clique no botão abaixo para fazer o download dos resultados do seu Quiz.
 			</p>
