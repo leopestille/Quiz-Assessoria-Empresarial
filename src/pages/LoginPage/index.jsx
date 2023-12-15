@@ -51,7 +51,7 @@ const LoginPage = () => {
 					/>
 
 				</div>
-				{errorMessage && <p className="error">{errorMessage}</p>}{" "}
+				{errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
 				{}
 				<div className="link-container">
 					<Link to="/register">

@@ -71,3 +71,6 @@
         width: 85%;
     }
 }
+.error-message {
+  color: red;
+}
