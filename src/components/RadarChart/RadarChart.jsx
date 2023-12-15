@@ -1,20 +1,14 @@
 import { useEffect, forwardRef } from "react";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import PropTypes from 'prop-types';
 
-/* `Chart.register(ChartDataLabels);` está registrando o plugin `ChartDataLabels` com o `Chart`
-objeto da biblioteca `chart.js`. Isso permite que o plug-in seja usado na configuração do gráfico e
-permite a exibição de rótulos de dados no gráfico. */
+
 Chart.register(ChartDataLabels);
-/* `Chart.defaults.font.size = 16;` está definindo o tamanho de fonte padrão para todos os gráficos criados usando o
-objeto `Chart` da biblioteca `chart.js` para 16 pixels. Isso significa que todos os elementos de texto no
-gráfico, como rótulos e dicas de ferramentas, terá um tamanho de fonte de 16 pixels, a menos que seja explicitamente substituído
-na configuração do gráfico. */
+
 Chart.defaults.font.size = 16;
 
-/* O código define um componente funcional chamado `RadarChart` usando a função `forwardRef` de
-Reagir. O componente recebe três props: `data`, `labels` e `label`. Ele também recebe um `ref`
-objeto. */
+
 const RadarChart = forwardRef(({ data, labels, label }, ref) => {
   const canvasRef = ref;
 
@@ -31,14 +25,14 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                 label,
                 data,
                 backgroundColor: [
-                  "rgba(147, 112, 219, 0.60)",                  
+                  "rgba(147, 112, 219, 0.60)",
                 ],
               },
             ],
           },
           options: {
             scales: {
-                r: {               
+                r: {
                     ticks: {
                       fontSize: 16,
                       callback: function(value, index, values) {
@@ -47,8 +41,8 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                         } else {
                           return "";
                         }
-                      }                      
-                    },                  
+                      }
+                    },
                     angleLines: {
                         display: false
                     },
@@ -57,7 +51,7 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                     pointLabels: {
                       color: "rgb(0, 0, 0)",
                       font: {
-                        size: 18,                        
+                        size: 18,
                       }
                     },
                     grid: {
@@ -74,7 +68,7 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
                     formatter: function(value) {
                         return value
                     }
-                }               
+                }
             }
           }
         }
@@ -89,5 +83,11 @@ const RadarChart = forwardRef(({ data, labels, label }, ref) => {
 });
 
 RadarChart.displayName = "DiagnosticoDataInsight";
+
+RadarChart.propTypes = {
+  data: PropTypes.array.isRequired,
+  labels: PropTypes.array.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 export default RadarChart;
