@@ -8,6 +8,7 @@ const LoginPage = () => {
 	const { login, errorMessage, clearMessageError } = useContext(AuthContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [passwordError, setPasswordError] = useState(null);
 
 	useEffect(() => {
 		return () => {
@@ -15,9 +16,19 @@ const LoginPage = () => {
 		};
 	}, []);
 
+	const validatePassword = (password) => {
+		const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+		return re.test(password);
+	}
+
 
 	const handleLogin = async (event) => {
 		event.preventDefault();
+		if (!validatePassword(password)) {
+			setPassword("A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.");
+			return;
+		}
+		setPasswordError(null);
 		await login(email, password);
 	};
 
@@ -46,6 +57,7 @@ const LoginPage = () => {
 						onChange={(f) => setPassword(f.target.value)}
 						required
 					/>
+					{passwordError && <p className="error">{passwordError}</p>}
 				</div>
 				{errorMessage && <p className="error">{errorMessage}</p>}{" "}
 				{}
