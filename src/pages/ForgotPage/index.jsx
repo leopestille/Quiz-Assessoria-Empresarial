@@ -3,24 +3,36 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-/**
-  * O componente `ForgotPage` é um formulário que permite aos usuários inserir seu e-mail para receber uma senha
-  * link de redefinição e exibe uma mensagem de resposta, se houver.
-  * @returns O componente `ForgotPage` está sendo retornado.
-  */
+
 const ForgotPage = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState(null);
+    const [error, setError] = useState(null);
+
     const URL = import.meta.env.VITE_APP_API_URL;
-    
-    /**
-     * The `handleForgot` function is an asynchronous function that sends a POST request to a specified
-     * URL with an email parameter, and sets the response data or error message to the `message` state
-     * variable.
-     */
+
+    const validateEmail = (email) => {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+
+    const handleEmailChange = (event) => {
+      setEmail(event.target.value);
+      if (!validateEmail(event.target.value)) {
+        setError("Por favor, insira um email válido.");
+      } else {
+        setError(null);
+      }
+    }
+
     const handleForgot = async (event) => {
         event.preventDefault();
-        
+
+        if (!validateEmail(email)) {
+          setError("Por favor, insira um email válido.");
+          return;
+      }
+
         try {
             const response = await axios.post(
                 `${URL}forgot-password`,
@@ -28,18 +40,18 @@ const ForgotPage = () => {
                 email,
               }
             );
-            setMessage(response.data);            
+            setMessage(response.data);
         } catch (error) {
             if (error.response) {
-                setMessage(error.response.data);                
+                setMessage(error.response.data);
             } else {
                  setMessage(
                    "Ocorreu um erro ao tentar redefinir a senha. Tente novamente."
                  );
-            }            
+            }
         }
     };
-    
+
     return (
       <div id="forgot__form">
         <form className="form" onSubmit={handleForgot}>
@@ -54,9 +66,10 @@ const ForgotPage = () => {
               name="email"
               id="email"
               value={email}
-              onChange={(b) => setEmail(b.target.value)}
+              onChange={handleEmailChange}
               required
             />
+            {error && <p className="error-message">{error}</p>}
           </div>
           <div className="link-container">
             {/* Mostre a mensagem de retorno aqui, se ela existir */}
