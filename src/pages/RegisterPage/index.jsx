@@ -3,11 +3,7 @@ import { AuthContext } from "../../context/auth";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-/**
-  * O componente RegisterPage é um formulário que manipula o registro do usuário e exibe sucesso e erro
-  * mensagens.
-  * @returns O componente RegisterPage está retornando um formulário para registro do usuário.
-  */
+
 const RegisterPage = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -22,10 +18,7 @@ const RegisterPage = () => {
 		};
 	}, []);
 
-	/**
-	 * A função "handleRegister" é uma função assíncrona que manipula o processo de registro
-	 * e exibe uma mensagem de sucesso se o registro for bem-sucedido.
-	 */
+
 	const handleRegister = async (event) => {
 		event.preventDefault();
 		const response = await register(name, email, password);
@@ -35,11 +28,7 @@ const RegisterPage = () => {
 		}
 	};
 
-	/**
-	 * A função verifica se o formulário é válido garantindo que todos os campos obrigatórios sejam preenchidos e que
-	 * os campos de senha e confirmação de senha correspondem.
-	 * @retorna um valor booleano indicando se o formulário é válido ou não.
-	 */
+
 	const isFormValid = () => {
 		return email && password && confirmPassword && password === confirmPassword;
 	};
