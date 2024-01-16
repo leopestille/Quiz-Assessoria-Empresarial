@@ -1,16 +1,16 @@
 import "./App.css";
-import AppRoutes from "./AppRoutes";
-import ErrorBoundary from "./components/Error/ErrorBoundary";
+/*import AppRoutes from "./AppRoutes";
+import ErrorBoundary from "./components/Error/ErrorBoundary";*/
 
 
 function App() {
-  return (
+  /*return (
     <div className="App">
-      <ErrorBoundary>
-      <AppRoutes />
-      </ErrorBoundary>
+     <ErrorBoundary>
+     <AppRoutes />
+     </ErrorBoundary>
     </div>
-  );
+  );*/
 }
 
 export default App;
