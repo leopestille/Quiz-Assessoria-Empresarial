@@ -1,5 +1,3 @@
-# Quiz-Assessoria-Empresarial
-
 # Quiz Assessoria Empresarial
 
 Aplicação web de quiz para assessoria de finanças empresariais. O usuário responde a um questionário e recebe um diagnóstico com os resultados apresentados em gráficos, além da opção de exportar o relatório em PDF.
